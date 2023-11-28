@@ -52,7 +52,7 @@ namespace Scirpts.Movement
             }
         }
 
-        private Vector3 GetNewVelocity()
+        public Vector3 GetNewVelocity()
         {
             return new Vector3(_horizontal, 0f, _vertical) * (_moveSpeed * Time.fixedDeltaTime);
         }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IPickupable
 {
-    void OnPickup(Transform parent);
-    void OnDrop();
+    void OnPickup(GameObject gameObject);
+    void OnDrop(GameObject gameObject);
 }
 

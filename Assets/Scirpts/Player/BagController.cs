@@ -1,38 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
+using Scirpts.Money;
+using Scirpts.Singleton;
 using UnityEngine;
 
-public class BagController : MonoBehaviour
+namespace Scirpts.Player
 {
-    [SerializeField] private Transform _bagTransform;
-    public List<GameObject> playerBanknoteList = new List<GameObject>();
-
-    private Vector3 banknoteSize;
-    public float banknoteSpacing = 0.1f;
-
-    public void AddBanknoteToBag(GameObject banknote)
+    public class BagController : Singleton<BagController>
     {
-        banknote.transform.SetParent(_bagTransform, true);
-        CalculateObjectSize(banknote);
-        float yPos = CalculateNewYPosition();
-        banknote.transform.localRotation = Quaternion.identity;
-        banknote.transform.localPosition = Vector3.zero;
-        banknote.transform.localPosition = new Vector3(0, yPos, 0);
-        playerBanknoteList.Add(banknote);
-    }
+        [SerializeField] private Transform _bagTransform;
+        private Vector3 _banknoteSize;
 
-    public float CalculateNewYPosition()
-    {
-        float newYPos = banknoteSize.y * playerBanknoteList.Count + banknoteSpacing * playerBanknoteList.Count;
-        return newYPos;
-    }
+        private readonly float _banknoteSpacing = 0.1f;
+        private readonly int _banknoteIncreaseValue = 1;
 
-    private void CalculateObjectSize(GameObject gameObject)
-    {
-        if (banknoteSize == Vector3.zero)
+        public void AddBanknoteToBag(GameObject banknote)
         {
-            MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
-            banknoteSize = meshRenderer.bounds.size;
+            banknote.transform.SetParent(_bagTransform, true);
+            CalculateObjectSize(banknote);
+
+            float yPos = CalculateNewYPosition();
+            SetBanknoteTransform(banknote, yPos);
+
+            BanknoteManager.Instance.BanknoteTextUpdate(_banknoteIncreaseValue);
+            BanknoteManager.Instance._playerBanknoteList.Add(banknote);
+        }
+
+        private void SetBanknoteTransform(GameObject banknote, float yPos)
+        {
+            banknote.transform.localRotation = Quaternion.identity;
+            banknote.transform.localPosition = new Vector3(0, yPos, 0);
+        }
+
+        private float CalculateNewYPosition()
+        {
+            return _banknoteSize.y * BanknoteManager.Instance._playerBanknoteList.Count +
+                   _banknoteSpacing * BanknoteManager.Instance._playerBanknoteList.Count;
+        }
+
+        private void CalculateObjectSize(GameObject gameObject)
+        {
+            if (_banknoteSize == Vector3.zero)
+            {
+                MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+                _banknoteSize = meshRenderer.bounds.size;
+            }
         }
     }
 }

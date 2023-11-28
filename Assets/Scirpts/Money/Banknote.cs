@@ -1,17 +1,19 @@
 using System;
+using Scirpts.Player;
 using UnityEngine;
 
 namespace Scirpts.Money
 {
     public class Banknote : MonoBehaviour
     {
-        private BagController _bagController;
         private void OnTriggerEnter(Collider other)
         {
             if (other.attachedRigidbody.CompareTag("Player"))
             {
-                _bagController = other.GetComponent<BagController>();
-                _bagController.AddBanknoteToBag(this.gameObject);
+                BagController.Instance?.AddBanknoteToBag(this.gameObject);
+                gameObject.GetComponent<Collider>().enabled = false;
+                gameObject.GetComponent<Banknote>().enabled = false;
+
             }
         }
     }
