@@ -33,8 +33,8 @@ namespace Scirpts.Unit
         [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private float _unitSpeed = 2;
 
-        private Transform unitOffsetRef;
-        private Transform _playerRotationRef;
+        private Transform unitOffsetRef = null;
+        private Transform _playerRotationRef= null;
         private readonly List<GameObject> _spawnedUnits = new List<GameObject>();
         private List<Vector3> _points = new List<Vector3>();
         private Transform _parent;
@@ -64,12 +64,18 @@ namespace Scirpts.Unit
 
         private void OnTriggerEnter(Collider other)
         {
-            boxFormation.UnitDepth = 1;
+            if (other.attachedRigidbody.CompareTag("Player"))
+            {
+                boxFormation.UnitDepth = 1;
+            }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            boxFormation.UnitDepth = 2;
+            if (other.attachedRigidbody.CompareTag("Player"))
+            {
+                boxFormation.UnitDepth = 2;
+            }
         }
 
 
@@ -139,7 +145,7 @@ namespace Scirpts.Unit
         {
             foreach (var pos in points)
             {
-                var unit = Instantiate(_unitPrefab, transform.position + pos, Quaternion.identity, _parent);
+                var unit = Instantiate(_unitPrefab, transform.position + pos, Quaternion.identity);
                 _spawnedUnits.Add(unit);
             }
         }

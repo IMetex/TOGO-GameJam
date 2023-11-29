@@ -7,16 +7,17 @@ TagManager:
   - Banknote
   - UnitOffsetTag
   - PlayerRotationTag
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - FriendlyUnit
+  - Unite
+  - EnemyLayer
   - 
   - 
   - 

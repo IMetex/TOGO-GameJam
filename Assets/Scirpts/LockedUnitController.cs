@@ -14,7 +14,7 @@ namespace Scirpts
         [SerializeField] private GameObject lockedUnit;
         [SerializeField] private GameObject unlockedUnit;
 
-        private const float DecrementTimerMax = 2f;
+        private const float DecrementTimerMax = 0.5f;
         private float decrementTimer = DecrementTimerMax;
 
         private bool isPurchased = false;

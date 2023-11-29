@@ -411,7 +411,7 @@ MonoBehaviour:
   fillImage: {fileID: 4592324227867687545}
   fillSpeed: 0.5
   boxFormation: {fileID: 6195074035231676006}
-  _unitPrefab: {fileID: 977142777130978450, guid: 5a409a0f87fb70c429d91f5f8b9dc1f3,
+  _unitPrefab: {fileID: 7295912640031263150, guid: c33eeafcb9aad8b43870feec6f4c5fb1,
     type: 3}
   _unitSpeed: 2
 --- !u!114 &6195074035231676006

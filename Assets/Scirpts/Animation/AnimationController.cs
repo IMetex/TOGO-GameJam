@@ -10,5 +10,10 @@ namespace Scirpts.Animation
         {
             _animator.SetBool(animationType,value);
         }
+        
+        public void TriggerAnimation(string animationType)
+        {
+            _animator.SetTrigger(animationType);
+        }
     }
 }
