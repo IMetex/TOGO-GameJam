@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class UnitManager : Singleton<UnitManager>
 {
-    //public  List<GameObject> _spawnedUnits = new List<GameObject>();
-    private List<Vector3> _points = new List<Vector3>();
     private Transform _parent;
-
-
+    public bool enemyAttack = false;
+    
 }

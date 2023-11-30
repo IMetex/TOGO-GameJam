@@ -1,8 +1,7 @@
-using System;
 using Scirpts.Money;
-using Scirpts.Player;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 
 namespace Scirpts
@@ -13,6 +12,7 @@ namespace Scirpts
         [SerializeField] private TMP_Text priceText;
         [SerializeField] private GameObject lockedUnit;
         [SerializeField] private GameObject unlockedUnit;
+        [SerializeField] private Vector3 _spawnPos;
 
         private const float DecrementTimerMax = 0.5f;
         private float decrementTimer = DecrementTimerMax;
@@ -73,7 +73,8 @@ namespace Scirpts
 
             if (unlockedUnit != null)
             {
-                Instantiate(unlockedUnit);
+               var unlockObject =  Instantiate(unlockedUnit, transform.position + _spawnPos, Quaternion.identity);
+               unlockObject.transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutBack);
             }
 
             isPurchased = true;

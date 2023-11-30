@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Scirpts.Animation;
+using Scirpts.Enemy;
 using Scirpts.Money;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Scirpts.Unit
@@ -34,7 +33,7 @@ namespace Scirpts.Unit
         [SerializeField] private float _unitSpeed = 2;
 
         private Transform unitOffsetRef = null;
-        private Transform _playerRotationRef= null;
+        private Transform _playerRotationRef = null;
         private readonly List<GameObject> _spawnedUnits = new List<GameObject>();
         private List<Vector3> _points = new List<Vector3>();
         private Transform _parent;
@@ -100,42 +99,36 @@ namespace Scirpts.Unit
             SetFormation();
         }
 
-
         public void SetFormation()
         {
-            _points = Formation.EvaluatePoints().ToList();
-
-            for (var i = 0; i < _spawnedUnits.Count; i++)
+            if (UnitManager.Instance.enemyAttack == false)
             {
-                GameObject unit = _spawnedUnits[i];
-                Animator unitAnimator = unit.GetComponent<Animator>();
+                _points = Formation.EvaluatePoints().ToList();
 
-                Vector3 targetPosition = unitOffsetRef.position + _points[i];
-
-
-                unit.transform.position =
-                    Vector3.MoveTowards(unit.transform.position, targetPosition, _unitSpeed * Time.deltaTime);
-
-                if (Vector3.Distance(unit.transform.position, targetPosition) > 0.1f)
+                for (var i = 0; i < _spawnedUnits.Count; i++)
                 {
-                    unitAnimator.SetBool("IsWalking", true);
-                }
-                else
-                {
-                    unitAnimator.SetBool("IsWalking", false);
-                }
+                    GameObject unit = _spawnedUnits[i];
+                    Animator unitAnimator = unit.GetComponent<Animator>();
+                    Vector3 targetPosition = unitOffsetRef.position + _points[i];
 
-                Vector3 direction = (_playerRotationRef.position - unit.transform.position).normalized;
-                if (direction != Vector3.zero)
-                {
-                    float rotationSpeed = 90f;
-                    Quaternion targetRotation = Quaternion.LookRotation(direction);
-                    unit.transform.rotation = Quaternion.Slerp(unit.transform.rotation, targetRotation,
-                        rotationSpeed * Time.deltaTime);
+                    unit.transform.position =
+                        Vector3.MoveTowards(unit.transform.position, targetPosition, _unitSpeed * Time.deltaTime);
+
+                    var move = (Vector3.Distance(unit.transform.position, targetPosition) > 0.1f);
+
+                    unitAnimator.SetBool("IsWalking", move);
+
+                    Vector3 direction = (_playerRotationRef.position - unit.transform.position).normalized;
+                    if (direction != Vector3.zero)
+                    {
+                        float rotationSpeed = 90f;
+                        Quaternion targetRotation = Quaternion.LookRotation(direction);
+                        unit.transform.rotation = Quaternion.Slerp(unit.transform.rotation, targetRotation,
+                            rotationSpeed * Time.deltaTime);
+                    }
                 }
             }
         }
-
         private void ResetFillBar()
         {
             fillImage.fillAmount = 0f;
@@ -147,6 +140,7 @@ namespace Scirpts.Unit
             {
                 var unit = Instantiate(_unitPrefab, transform.position + pos, Quaternion.identity);
                 _spawnedUnits.Add(unit);
+                EnemyManager.Instance.friendlyUnit.Add(unit.transform);
             }
         }
 

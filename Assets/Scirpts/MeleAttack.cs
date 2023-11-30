@@ -17,5 +17,11 @@ namespace Scirpts
             yield return new WaitForSeconds(attackCooldown);
             CanAttack = true;
         }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, attackRange);
+        }
     }
 }

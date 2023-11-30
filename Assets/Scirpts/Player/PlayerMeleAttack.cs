@@ -19,7 +19,7 @@ namespace Scirpts.Player
         {
             foreach (var enemy in EnemyManager.Instance.enemies)
             {
-                if (enemy == null) continue;
+                if (enemy != null) continue;
 
                 float distanceToPlayer = Vector3.Distance(enemy.position, transform.position + Vector3.up);
 
@@ -37,12 +37,6 @@ namespace Scirpts.Player
             CanAttack = false;
             _animatorController.TriggerAnimation("IsAttack");
             StartCoroutine(ResetAttackCooldown());
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, attackRange);
         }
     }
 }
