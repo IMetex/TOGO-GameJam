@@ -7,10 +7,8 @@ public class BoxFormation : FormationBase
 {
     [SerializeField] private int _unitWidth = 5;
     [SerializeField] private int _unitDepth = 5;
-    [SerializeField] private bool _hollow = false;
     [SerializeField] private float _nthOffset = 0;
-
-
+    
     public int UnitWith
     {
         get => _unitWidth;
@@ -31,15 +29,9 @@ public class BoxFormation : FormationBase
         {
             for (var z = 0; z < _unitDepth; z++)
             {
-                if (_hollow && x != 0 && x != _unitWidth - 1 && z != 0 && z != _unitDepth - 1) continue;
                 var pos = new Vector3(x + (z % 2 == 0 ? 0 : _nthOffset), 0, z);
-
                 pos -= middleOffset;
-
-                pos += GetNoise(pos);
-
                 pos *= Spread;
-
                 yield return pos;
             }
         }

@@ -10,7 +10,6 @@ public class TransformFollower : MonoBehaviour
     void Update()
     {
         Vector3 direction = _target.position - transform.position;
-
         Vector3 newPosition = _target.position - direction.normalized * distance;
 
         transform.position = newPosition;

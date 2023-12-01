@@ -77,6 +77,7 @@ MonoBehaviour:
   _unitPrefab: {fileID: 7295912640031263150, guid: c33eeafcb9aad8b43870feec6f4c5fb1,
     type: 3}
   _unitSpeed: 2
+  _tent: {fileID: 3114499344710687321}
 --- !u!114 &1402478210211189145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,11 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2240909800957478cb1b0afb0bc89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noise: 0
-  Spread: 1
+  Spread: 1.2
   _unitWidth: 1
   _unitDepth: 1
-  _hollow: 0
   _nthOffset: 0
 --- !u!1 &1132341348920826051
 GameObject:

@@ -18,7 +18,7 @@ namespace Scirpts.Enemy
             rb = GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             foreach (var friendly in EnemyManager.Instance.friendlyUnit)
             {

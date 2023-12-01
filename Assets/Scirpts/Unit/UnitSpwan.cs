@@ -5,6 +5,7 @@ using Scirpts.Enemy;
 using Scirpts.Money;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Scirpts.Unit
 {
@@ -31,26 +32,21 @@ namespace Scirpts.Unit
 
         [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private float _unitSpeed = 2;
+        [SerializeField] private GameObject _tent;
 
         private Transform unitOffsetRef = null;
         private Transform _playerRotationRef = null;
-        private readonly List<GameObject> _spawnedUnits = new List<GameObject>();
-        private List<Vector3> _points = new List<Vector3>();
-        private Transform _parent;
+
 
         private void Start()
         {
-            GameObject unitOffsetObject = GameObject.FindWithTag("UnitOffsetTag");
-            if (unitOffsetObject != null)
-            {
-                unitOffsetRef = unitOffsetObject.transform;
-            }
+            FindGameObjectsWithTag();
+        }
 
-            GameObject playerRotationObject = GameObject.FindWithTag("PlayerRotationTag");
-            if (playerRotationObject != null)
-            {
-                _playerRotationRef = playerRotationObject.transform;
-            }
+        private void FindGameObjectsWithTag()
+        {
+            unitOffsetRef = GameObject.FindGameObjectWithTag("UnitOffsetTag")?.transform;
+            _playerRotationRef = GameObject.FindGameObjectWithTag("PlayerRotationTag")?.transform;
         }
 
         private void OnTriggerStay(Collider other)
@@ -82,15 +78,29 @@ namespace Scirpts.Unit
         {
             fillImage.fillAmount += fillSpeed * Time.deltaTime;
 
-            if (fillImage.fillAmount >= 1f && BanknoteManager.Instance != null &&
-                BanknoteManager.Instance.GetBanknoteCount() > 0)
+            if (fillImage.fillAmount >= 1f && BanknoteManager.Instance.GetBanknoteCount() > 0 &&
+                UnitManager.Instance.SpawnedUnitsCount < UnitManager.Instance.MaxUnitCount)
             {
-                _points = Formation.EvaluatePoints().ToList();
-                var remainingPoints = _points.Skip(_spawnedUnits.Count);
+                UnitManager.Instance._points = Formation.EvaluatePoints().ToList();
+                var remainingPoints =
+                    UnitManager.Instance._points.Skip(UnitManager.Instance._spawnedUnits.Count);
                 Spawn(remainingPoints);
+                
+                ObjectTweenAnim(_tent);
                 boxFormation.UnitWith++;
+                UnitManager.Instance.UnitCountDisplay();
                 BanknoteManager.Instance.RemovePlayerBanknote();
                 ResetFillBar();
+            }
+        }
+
+        private void Spawn(IEnumerable<Vector3> points)
+        {
+            foreach (var pos in points)
+            {
+                var unit = Instantiate(_unitPrefab, transform.position + pos, Quaternion.identity);
+                UnitManager.Instance._spawnedUnits.Add(unit);
+                EnemyManager.Instance.friendlyUnit.Add(unit.transform);
             }
         }
 
@@ -101,57 +111,53 @@ namespace Scirpts.Unit
 
         public void SetFormation()
         {
-            if (UnitManager.Instance.enemyAttack == false)
+            UnitManager.Instance._points = Formation.EvaluatePoints().ToList();
+
+            for (var i = 0; i < UnitManager.Instance._spawnedUnits.Count; i++)
             {
-                _points = Formation.EvaluatePoints().ToList();
-
-                for (var i = 0; i < _spawnedUnits.Count; i++)
-                {
-                    GameObject unit = _spawnedUnits[i];
-                    Animator unitAnimator = unit.GetComponent<Animator>();
-                    Vector3 targetPosition = unitOffsetRef.position + _points[i];
-
-                    unit.transform.position =
-                        Vector3.MoveTowards(unit.transform.position, targetPosition, _unitSpeed * Time.deltaTime);
-
-                    var move = (Vector3.Distance(unit.transform.position, targetPosition) > 0.1f);
-
-                    unitAnimator.SetBool("IsWalking", move);
-
-                    Vector3 direction = (_playerRotationRef.position - unit.transform.position).normalized;
-                    if (direction != Vector3.zero)
-                    {
-                        float rotationSpeed = 90f;
-                        Quaternion targetRotation = Quaternion.LookRotation(direction);
-                        unit.transform.rotation = Quaternion.Slerp(unit.transform.rotation, targetRotation,
-                            rotationSpeed * Time.deltaTime);
-                    }
-                }
+                MoveUnit(UnitManager.Instance._spawnedUnits[i], UnitManager.Instance._points[i]);
             }
         }
+
+        private void MoveUnit(GameObject unit, Vector3 targetPosition)
+        {
+            Animator unitAnimator = unit.GetComponent<Animator>();
+
+            unit.transform.position = Vector3.MoveTowards(unit.transform.position,
+                unitOffsetRef.position + targetPosition, _unitSpeed * Time.deltaTime);
+
+            bool move = Vector3.Distance(unit.transform.position, unitOffsetRef.position + targetPosition) > 0.1f;
+            unitAnimator.SetBool("IsWalking", move);
+
+            RotateUnitTowardsPlayer(unit);
+        }
+
+        private void RotateUnitTowardsPlayer(GameObject unit)
+        {
+            Vector3 direction = (_playerRotationRef.position - unit.transform.position).normalized;
+
+            if (direction != Vector3.zero)
+            {
+                float rotationSpeed = 90f;
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                unit.transform.rotation = Quaternion.Slerp(unit.transform.rotation, targetRotation,
+                    rotationSpeed * Time.deltaTime);
+            }
+        }
+
         private void ResetFillBar()
         {
             fillImage.fillAmount = 0f;
         }
 
-        private void Spawn(IEnumerable<Vector3> points)
+        private void ObjectTweenAnim(GameObject obj)
         {
-            foreach (var pos in points)
-            {
-                var unit = Instantiate(_unitPrefab, transform.position + pos, Quaternion.identity);
-                _spawnedUnits.Add(unit);
-                EnemyManager.Instance.friendlyUnit.Add(unit.transform);
-            }
-        }
+            var scale = new Vector3(0.5f, 0.5f, 0.5f);
+            Vector3 doScale = scale * 1.1f;
+            
+            obj.transform.DOScale(doScale, 0.05f).OnComplete(() =>
+                obj.transform.DOScale(scale, 0.05f));
 
-        private void Kill(int num)
-        {
-            for (var i = 0; i < num; i++)
-            {
-                var unit = _spawnedUnits.Last();
-                _spawnedUnits.Remove(unit);
-                Destroy(unit.gameObject);
-            }
         }
     }
 }

@@ -39,9 +39,7 @@ public class RadialFormation : FormationBase
                 var z = Mathf.Sin(angle) * radius;
 
                 var pos = new Vector3(x, 0, z);
-
-                pos += GetNoise(pos);
-
+                
                 pos *= Spread;
 
                 yield return pos;

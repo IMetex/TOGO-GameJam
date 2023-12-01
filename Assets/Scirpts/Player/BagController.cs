@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Scirpts.Money;
 using Scirpts.Singleton;
 using UnityEngine;
@@ -15,9 +16,10 @@ namespace Scirpts.Player
         public void AddBanknoteToBag(GameObject banknote)
         {
             banknote.transform.SetParent(_bagTransform, true);
+            
             CalculateObjectSize(banknote);
-
             float yPos = CalculateNewYPosition();
+
             SetBanknoteTransform(banknote, yPos);
 
             BanknoteManager.Instance.BanknoteTextUpdate(_banknoteIncreaseValue);

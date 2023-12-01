@@ -5,19 +5,18 @@ namespace Scirpts.Unit
 {
     public class UnitMeleeAttack : MeleeAttack
     {
-        private Rigidbody rb;
+        private Rigidbody _rb;
         public float chaseRange = 10f;
         public float moveSpeed = 3.0f;
-
         public Animator unitAnimator;
 
         private void Start()
         {
             unitAnimator = GetComponent<Animator>();
-            rb = GetComponent<Rigidbody>();
+            _rb = GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             foreach (var enemy in EnemyManager.Instance.enemies)
             {
@@ -28,22 +27,16 @@ namespace Scirpts.Unit
                 if (distanceToPlayer <= attackRange && CanAttack)
                 {
                     PerformAttack();
-                    UnitManager.Instance.enemyAttack = true;
                 }
 
                 else if (distanceToPlayer <= chaseRange)
                 {
                     Vector3 moveDirection = (enemy.position - transform.position).normalized;
-                    rb.velocity = moveDirection * moveSpeed;
-                    
+                    moveDirection.y = 0f;
+                    _rb.velocity = moveDirection * moveSpeed;
+
                     Vector3 lookDirection = new Vector3(moveDirection.x, 0, moveDirection.z);
                     transform.rotation = Quaternion.LookRotation(lookDirection);
-                    
-                    UnitManager.Instance.enemyAttack = true;
-                }
-                else
-                {
-                    UnitManager.Instance.enemyAttack = false;
                 }
             }
         }

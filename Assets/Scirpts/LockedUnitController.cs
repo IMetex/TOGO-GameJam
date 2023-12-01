@@ -2,6 +2,7 @@ using Scirpts.Money;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using Scirpts.Unit;
 
 
 namespace Scirpts
@@ -13,6 +14,7 @@ namespace Scirpts
         [SerializeField] private GameObject lockedUnit;
         [SerializeField] private GameObject unlockedUnit;
         [SerializeField] private Vector3 _spawnPos;
+        [SerializeField] private int _swpanUnitCount = 5;
 
         private const float DecrementTimerMax = 0.5f;
         private float decrementTimer = DecrementTimerMax;
@@ -75,6 +77,7 @@ namespace Scirpts
             {
                var unlockObject =  Instantiate(unlockedUnit, transform.position + _spawnPos, Quaternion.identity);
                unlockObject.transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutBack);
+               UnitManager.Instance.MaxUnitCount += _swpanUnitCount;
             }
 
             isPurchased = true;
