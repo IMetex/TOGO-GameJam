@@ -1,49 +1,9 @@
 fileFormatVersion: 2
-guid: 9f33296d4f6740c4d90bb7695c629d95
+guid: fdd6c81db7cfc9d4d9168b3155bf06ee
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Castle_1
-    second: {fileID: 2100000, guid: 708569e5c2c6219498cdf4a17557a60b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Castle_2
-    second: {fileID: 2100000, guid: d6388fafd7e922c4caf4efa5c1e47920, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Castle_3
-    second: {fileID: 2100000, guid: aaac8c6ac39f0294e9bab018713f99c3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Castle_4
-    second: {fileID: 2100000, guid: e8f855017f5b4b440afb20cd940d0d4e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Flag_1
-    second: {fileID: 2100000, guid: 2b870f3b1c4912f4da71b2ee1239d904, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Flag_2
-    second: {fileID: 2100000, guid: df480a8774fc504438c32e86c70aacd9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: 87495b2c0e0305f43bba3335f8e23d05, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: UV
-    second: {fileID: 2100000, guid: de73cc061a678854996364658fed2e3c, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
