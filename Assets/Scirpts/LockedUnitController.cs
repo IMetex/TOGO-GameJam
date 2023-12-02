@@ -77,7 +77,7 @@ namespace Scirpts
             {
                var unlockObject =  Instantiate(unlockedUnit, transform.position + _spawnPos, Quaternion.identity);
                unlockObject.transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutBack);
-               UnitManager.Instance.MaxUnitCount += _swpanUnitCount;
+               FriendlyUnitManager.Instance.MaxUnitCount += _swpanUnitCount;
             }
 
             isPurchased = true;

@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace Scirpts.Money
 {
-    public class Banknote : MonoBehaviour
+    public class BanknoteSilver : MonoBehaviour
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.attachedRigidbody.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
                 BagController.Instance.AddBanknoteToBag(this.gameObject);
                 gameObject.GetComponent<Collider>().enabled = false;
-                gameObject.GetComponent<Banknote>().enabled = false;
+                gameObject.GetComponent<BanknoteSilver>().enabled = false;
 
             }
         }

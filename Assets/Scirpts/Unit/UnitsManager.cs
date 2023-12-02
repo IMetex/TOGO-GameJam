@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scirpts.Enemy
 {
-    public class EnemyManager : Singleton<EnemyManager>
+    public class UnitsManager : Singleton<UnitsManager>
     {
         public List<Transform> enemies = new List<Transform>();
         public List<Transform> friendlyUnit = new List<Transform>();

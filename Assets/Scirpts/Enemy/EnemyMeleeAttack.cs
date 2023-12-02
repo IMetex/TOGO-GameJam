@@ -1,88 +1,87 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Scirpts.Enemy
 {
-    public class EnemyMeleeAttack : MeleeAttack
+    public class EnemyMeleeAttack : UnitAttackBase
     {
-        [SerializeField] private float chaseRange = 10f;
-        [SerializeField] private float moveSpeed = 3.0f;
+        private const string PlayerTag = "Player";
+        private Transform _playerReference;
 
-        [SerializeField] private Transform player;
-        [SerializeField] private Animator enemyAnimator;
-
-        private Rigidbody rb;
-
-        private void Start()
+        protected override void Start()
         {
-            rb = GetComponent<Rigidbody>();
+                                     
+            base.Start();
+            _playerReference = GameObject.FindWithTag(PlayerTag)?.transform;
         }
 
-        private void FixedUpdate()
+        protected override void CheckStatus()
         {
-            foreach (var friendly in EnemyManager.Instance.friendlyUnit)
-            {
-                float distanceToFriendly = Vector3.Distance(friendly.position, transform.position);
+            bool foundFriendlyInChaseRange = false;
 
-                if (distanceToFriendly <= attackRange && CanAttack)
+            for (int i = UnitsManager.Instance.friendlyUnit.Count - 1; i >= 0; i--)
+            {
+                var friendly = UnitsManager.Instance.friendlyUnit[i];
+                float distanceToFriendly = ReturnDistance(friendly);
+
+                if (distanceToFriendly < chaseDistance)
                 {
-                    PerformAttack();
+                    foundFriendlyInChaseRange = true;
+
+                    if (distanceToFriendly > attackRange)
+                    {
+                        IsChasing = true;
+                        FaceTarget(friendly);
+                        Agent.SetDestination(friendly.position);
+                        _isAttacking = false;
+                    }
+                    else
+                    {
+                        IsChasing = false;
+                        FaceTarget(friendly);
+                        PerformAttack(friendly.gameObject);
+                        Agent.SetDestination(OriginalPosition);
+                        _isAttacking = true;
+                    }
                 }
-                else if (distanceToFriendly <= chaseRange)
+            }
+            
+            // Attack to player
+            if (!foundFriendlyInChaseRange)
+            {
+                float distanceToPlayer = ReturnDistance(_playerReference);
+
+                if (distanceToPlayer > chaseDistance)
                 {
-                    MoveTowardsTarget(friendly.position);
+                    Agent.SetDestination(OriginalPosition);
+                    IsChasing = false;
                 }
-                else
+
+                if (distanceToPlayer < chaseDistance && distanceToPlayer > attackRange)
                 {
-                    enemyAnimator.SetBool("IsWalking", false);
+                    IsChasing = true;
+                    FaceTarget(_playerReference);
+                    Agent.SetDestination(_playerReference.position);
+                }
+
+                if (distanceToPlayer < chaseDistance && distanceToPlayer <= attackRange)
+                {
+                    IsChasing = false;
+                    FaceTarget(_playerReference);
+                    PerformAttack(_playerReference.gameObject);
+                    Agent.SetDestination(OriginalPosition);
                 }
             }
-
-            PlayerAttack();
         }
-
-        private void MoveTowardsTarget(Vector3 targetPosition)
-        {
-            enemyAnimator.SetBool("IsWalking", true);
-
-            Vector3 moveDirection = (targetPosition - transform.position).normalized;
-            rb.velocity = moveDirection * (moveSpeed * Time.deltaTime);
-
-            Vector3 lookDirection = new Vector3(moveDirection.x, 0, moveDirection.z);
-            transform.rotation = Quaternion.LookRotation(lookDirection);
-        }
-
-        private void PlayerAttack()
-        {
-            float distanceToPlayer = Vector3.Distance(player.position, transform.position);
-
-            if (distanceToPlayer <= attackRange && CanAttack)
-            {
-                PerformAttack();
-            }
-            else if (distanceToPlayer <= chaseRange)
-            {
-                MoveTowardsTarget(player.position);
-            }
-            else
-            {
-                enemyAnimator.SetBool("IsWalking", false);
-            }
-        }
-
-        protected override void PerformAttack()
-        {
-            if (!CanAttack) return;
-
-            CanAttack = false;
-            enemyAnimator.SetTrigger("IsAttack");
-            StartCoroutine(ResetAttackCooldown());
-        }
-
-        private void OnDrawGizmosSelected()
+        
+        private void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position + Vector3.up, chaseRange);
+            Gizmos.DrawWireSphere(transform.position + Vector3.up, chaseDistance);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + Vector3.up, attackRange);
         }
     }
 }

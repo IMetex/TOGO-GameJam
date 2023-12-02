@@ -5,17 +5,17 @@ namespace Scirpts.Movement
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [Header("Joystick Referance")] [SerializeField]
+        [Header("Joystick Reference")] [SerializeField]
         private DynamicJoystick _dynamicJoystick;
 
-        [Header("Player Transform Referance")] [SerializeField]
-        private Transform _playerChildTransfrom;
+        [Header("Player Transform Reference")] 
+        [SerializeField] private Transform _playerChildTransform;
 
         [Header("Player Speed Value")] [SerializeField]
         private float _moveSpeed;
 
-        private Rigidbody _playerRigidbody;
         private AnimationController _animationController;
+        private CharacterController _characterController;
 
         private float _horizontal;
         private float _vertical;
@@ -23,40 +23,33 @@ namespace Scirpts.Movement
         private void Awake()
         {
             _animationController = GetComponent<AnimationController>();
-            _playerRigidbody = GetComponent<Rigidbody>();
+            _characterController = GetComponent<CharacterController>();
         }
 
         private void Update()
         {
             GetMovementInput();
-        }
-
-        private void FixedUpdate()
-        {
             SetMovement();
             SetRotation();
         }
 
         private void SetMovement()
         {
-            _playerRigidbody.velocity = GetNewVelocity();
-            // Player Animation 
-            _animationController.SetBoolean("IsWalking", _horizontal != 0 || _vertical != 0);
+            Vector3 movementVector = new Vector3(_horizontal, 0f, _vertical).normalized;
+            
+            _characterController.SimpleMove(movementVector * _moveSpeed);
+            
+            _animationController.SetBoolean("IsWalking", movementVector != Vector3.zero);
         }
 
         private void SetRotation()
         {
-            Vector3 movementVector = GetNewVelocity();
+            Vector3 movementVector = new Vector3(_horizontal, 0f, _vertical).normalized;
 
             if (movementVector != Vector3.zero)
             {
-                _playerChildTransfrom.rotation = Quaternion.LookRotation(movementVector);
+                _playerChildTransform.rotation = Quaternion.LookRotation(movementVector);
             }
-        }
-
-        public Vector3 GetNewVelocity()
-        {
-            return new Vector3(_horizontal, 0f, _vertical) * (_moveSpeed * Time.fixedDeltaTime);
         }
 
         private void GetMovementInput()

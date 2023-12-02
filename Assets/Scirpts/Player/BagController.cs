@@ -7,16 +7,16 @@ namespace Scirpts.Player
 {
     public class BagController : Singleton<BagController>
     {
-        [SerializeField] private Transform _bagTransform;
+        [SerializeField] private Transform _bagTransformSilver;
+        [SerializeField] private Transform _bagTransformGold = null;
         private Vector3 _banknoteSize;
 
-        private readonly float _banknoteSpacing = 0.1f;
+        private readonly float _banknoteSpacing = 0;
         private readonly int _banknoteIncreaseValue = 1;
 
         public void AddBanknoteToBag(GameObject banknote)
         {
-            banknote.transform.SetParent(_bagTransform, true);
-            
+            banknote.transform.SetParent(_bagTransformSilver, true);
             CalculateObjectSize(banknote);
             float yPos = CalculateNewYPosition();
 

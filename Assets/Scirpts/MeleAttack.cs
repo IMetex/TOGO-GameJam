@@ -10,18 +10,12 @@ namespace Scirpts
 
         protected bool CanAttack = true;
 
-        protected abstract void PerformAttack();
+        protected abstract void PerformAttack(GameObject target);
 
         protected IEnumerator ResetAttackCooldown()
         {
             yield return new WaitForSeconds(attackCooldown);
             CanAttack = true;
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, attackRange);
         }
     }
 }
