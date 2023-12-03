@@ -30,7 +30,7 @@ namespace Scirpts.Unit
             _playerFollow = GameObject.FindWithTag(PlayerFollowTag)?.transform;
             _playerRotation = GameObject.FindWithTag(PlayerRotationTag)?.transform;
         }
-        
+
         private void SetFormation()
         {
             foreach (Vector3 point in FriendlyUnitManager.Instance.points)
@@ -39,7 +39,7 @@ namespace Scirpts.Unit
                 FaceTarget(_playerRotation);
             }
 
-            IsChasing = !(Agent.remainingDistance > 0.1f);
+            IsChasing = !(Agent.remainingDistance < 0.1f);
         }
 
         protected override void CheckStatus()
@@ -66,16 +66,17 @@ namespace Scirpts.Unit
                     {
                         IsChasing = false;
                         FaceTarget(enemy);
-                        PerformAttack(enemy.gameObject);  
+                        PerformAttack(enemy.gameObject);
                         _isAttacking = true;
                     }
                 }
             }
-            
+
             if (!foundEnemyInChaseRange)
             {
                 SetFormation();
             }
+            
         }
 
         private void OnDrawGizmosSelected()

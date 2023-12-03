@@ -64,7 +64,8 @@ namespace Scirpts.Enemy
 
         protected float ReturnDistance(Transform target)
         {
-            return (transform.position - target.position).sqrMagnitude;
+            return Vector3.Distance(transform.position ,new Vector3
+                (target.position.x,transform.position.y,target.position.z));
         }
 
         protected void FaceTarget(Transform target)

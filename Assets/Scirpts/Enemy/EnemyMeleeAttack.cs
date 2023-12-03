@@ -76,6 +76,7 @@ namespace Scirpts.Enemy
                     PerformAttack(_playerReference.gameObject);
                     Agent.SetDestination(OriginalPosition);
                 }
+              
             }
         }
         

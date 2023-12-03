@@ -45,7 +45,7 @@ namespace Scirpts.Enemy
                     unitAnimator.SetTrigger(IsDead);
                     units.RemoveAt(i);
                     unitBanknote.BanknoteCreater(unit, banknote);
-                    Destroy(unit.gameObject, 2.5f);
+                    Destroy(unit.gameObject, 2.2f);
                     _progressBar.UpdateProgressBar();
 
                     if (isFriendly)

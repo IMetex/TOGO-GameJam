@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1.5
-  chaseDistance: 50
+  chaseDistance: 10
   attackCooldown: 1
   walkSpeed: 2
   OriginalPosition: {x: 0, y: 0, z: 0}
