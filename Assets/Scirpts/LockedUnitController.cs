@@ -33,7 +33,7 @@ namespace Scirpts
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.attachedRigidbody.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
                 TryPurchase();
             }
@@ -75,7 +75,8 @@ namespace Scirpts
 
             if (unlockedUnit != null)
             {
-               var unlockObject =  Instantiate(unlockedUnit, transform.position + _spawnPos, Quaternion.identity);
+                Quaternion rotation = Quaternion.Euler(0, -90, 0);
+               var unlockObject =  Instantiate(unlockedUnit, transform.position + _spawnPos, rotation);
                unlockObject.transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutBack);
                FriendlyUnitManager.Instance.MaxUnitCount += _swpanUnitCount;
             }

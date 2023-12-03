@@ -43,7 +43,6 @@ namespace Scirpts.Enemy
                 _isAttacking = false;
                 Agent.isStopped = true;
                 Agent.velocity = Vector3.zero;
-                return;
             }
             
             CheckStatus();

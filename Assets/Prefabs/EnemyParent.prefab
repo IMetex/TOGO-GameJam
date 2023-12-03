@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1.5
-  chaseDistance: 10
+  chaseDistance: 50
   attackCooldown: 1
   walkSpeed: 2
   OriginalPosition: {x: 0, y: 0, z: 0}
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 20
+  damage: 15
 --- !u!114 &3736830307191957930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,8 +578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1f041c40a24f878c2d9aa7988c69a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  banknoteSilver: {fileID: 0}
-  banknoteGold: {fileID: 0}
 --- !u!1 &2089718738994584902
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,7 +51,8 @@ MonoBehaviour:
   lockedUnit: {fileID: 3387806660443604295}
   unlockedUnit: {fileID: 133825078443811744, guid: fa49c9c801565c54c9070f7f47b10025,
     type: 3}
-  _spawnPos: {x: 0, y: 0, z: -7}
+  _spawnPos: {x: 12, y: -20, z: -5}
+  _swpanUnitCount: 5
 --- !u!65 &7262473135606639477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71,8 +72,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.4617515, y: 1, z: 4.688244}
-  m_Center: {x: 0.15790057, y: 0, z: 0.5490761}
+  m_Size: {x: 4.819426, y: 1, z: 4.9485016}
+  m_Center: {x: -0.020936728, y: 0, z: 0.065497875}
 --- !u!1 &4960895328087568206
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +213,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 5}
+  m_SizeDelta: {x: 4, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3886292708734080551
 CanvasRenderer:
@@ -286,8 +287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1, y: -0.09}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.91, y: 0}
+  m_SizeDelta: {x: 0.7, y: 0.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6445184008688700671
 CanvasRenderer:
@@ -362,7 +363,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5, y: 5}
+  m_SizeDelta: {x: 4, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4819802255535087779
 CanvasRenderer:

@@ -8,11 +8,12 @@ namespace Scirpts.Movement
         [Header("Joystick Reference")] [SerializeField]
         private DynamicJoystick _dynamicJoystick;
 
-        [Header("Player Transform Reference")] 
-        [SerializeField] private Transform _playerChildTransform;
+        [Header("Player Transform Reference")] [SerializeField]
+        private Transform _playerChildTransform;
 
         [Header("Player Speed Value")] [SerializeField]
         private float _moveSpeed;
+
 
         private AnimationController _animationController;
         private CharacterController _characterController;
@@ -36,9 +37,9 @@ namespace Scirpts.Movement
         private void SetMovement()
         {
             Vector3 movementVector = new Vector3(_horizontal, 0f, _vertical).normalized;
-            
+
             _characterController.SimpleMove(movementVector * _moveSpeed);
-            
+
             _animationController.SetBoolean("IsWalking", movementVector != Vector3.zero);
         }
 

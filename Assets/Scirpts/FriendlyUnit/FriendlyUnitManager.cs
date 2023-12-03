@@ -10,7 +10,7 @@ namespace Scirpts.Unit
         public List<GameObject> spawnedUnits = new List<GameObject>();
         public List<Vector3> points = new List<Vector3>();
         public int SpawnedUnitsCount { get; set; } = 0;
-        public int MaxUnitCount { get; set; } = 5;
+        public int MaxUnitCount { get; set; } = 0;
 
         public TMP_Text spawnedUnitText;
 

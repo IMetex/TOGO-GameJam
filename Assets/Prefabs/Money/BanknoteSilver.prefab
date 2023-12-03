@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 991114380754079415}
   - component: {fileID: 305230922076323640}
   - component: {fileID: 3283045520893983812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BanknoteSilver
   m_TagString: Banknote
   m_Icon: {fileID: 0}
