@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Scirpts
 {
-    public abstract class MeleeAttack : MonoBehaviour
+    public abstract class PlayerBaseAttack : MonoBehaviour
     {
         [SerializeField] protected float attackRange = 2f;
         [SerializeField] protected float attackCooldown = 0.5f;

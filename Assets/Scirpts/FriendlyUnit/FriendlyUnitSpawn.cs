@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Scirpts.Enemy;
@@ -49,9 +48,9 @@ namespace Scirpts.Unit
             if (fillImage.fillAmount >= 1f && BanknoteManager.Instance.GetBanknoteCount() > 0 &&
                 FriendlyUnitManager.Instance.SpawnedUnitsCount < FriendlyUnitManager.Instance.MaxUnitCount)
             {
-                FriendlyUnitManager.Instance._points = Formation.EvaluatePoints().ToList();
+                FriendlyUnitManager.Instance.points = Formation.EvaluatePoints().ToList();
                 var remainingPoints =
-                    FriendlyUnitManager.Instance._points.Skip(FriendlyUnitManager.Instance._spawnedUnits.Count);
+                    FriendlyUnitManager.Instance.points.Skip(FriendlyUnitManager.Instance.spawnedUnits.Count);
                 Spawn(remainingPoints);
                 boxFormation.UnitWith++;
                 FriendlyUnitManager.Instance.UnitCountDisplay(1);
@@ -65,7 +64,7 @@ namespace Scirpts.Unit
             foreach (var pos in points)
             {
                 var unit = Instantiate(_unitPrefab, transform.position + pos, Quaternion.identity);
-                FriendlyUnitManager.Instance._spawnedUnits.Add(unit);
+                FriendlyUnitManager.Instance.spawnedUnits.Add(unit);
                 UnitsManager.Instance.friendlyUnit.Add(unit.transform);
             }
         }

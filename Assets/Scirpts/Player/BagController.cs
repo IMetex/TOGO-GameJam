@@ -8,22 +8,35 @@ namespace Scirpts.Player
     public class BagController : Singleton<BagController>
     {
         [SerializeField] private Transform _bagTransformSilver;
-        [SerializeField] private Transform _bagTransformGold = null;
+        [SerializeField] private Transform _bagTransformGold;
         private Vector3 _banknoteSize;
 
         private readonly float _banknoteSpacing = 0;
         private readonly int _banknoteIncreaseValue = 1;
 
-        public void AddBanknoteToBag(GameObject banknote)
+        public void AddSilverBanknoteToBag(GameObject banknote)
         {
             banknote.transform.SetParent(_bagTransformSilver, true);
+
             CalculateObjectSize(banknote);
-            float yPos = CalculateNewYPosition();
+            float yPos = CalculateNewYPositionGold() + CalculateNewYPosition();
 
             SetBanknoteTransform(banknote, yPos);
 
-            BanknoteManager.Instance.BanknoteTextUpdate(_banknoteIncreaseValue);
-            BanknoteManager.Instance._playerBanknoteList.Add(banknote);
+            BanknoteManager.Instance.SilverBanknoteTextUpdate(_banknoteIncreaseValue);
+            BanknoteManager.Instance.silverBanknoteList.Add(banknote);
+        }
+
+        public void AddGoldBanknoteToBag(GameObject banknote)
+        {
+            banknote.transform.SetParent(_bagTransformGold, true);
+
+            CalculateObjectSize(banknote);
+            float yPos = CalculateNewYPosition() + CalculateNewYPositionGold();
+            SetBanknoteTransform(banknote, yPos);
+
+            BanknoteManager.Instance.GoldBanknoteTextUpdate(_banknoteIncreaseValue);
+            BanknoteManager.Instance.goldBanknoteList.Add(banknote);
         }
 
         private void SetBanknoteTransform(GameObject banknote, float yPos)
@@ -34,8 +47,15 @@ namespace Scirpts.Player
 
         private float CalculateNewYPosition()
         {
-            return _banknoteSize.y * BanknoteManager.Instance._playerBanknoteList.Count +
-                   _banknoteSpacing * BanknoteManager.Instance._playerBanknoteList.Count;
+            float totalHeight = (_banknoteSize.y + _banknoteSpacing) * BanknoteManager.Instance.goldBanknoteList.Count;
+            return totalHeight;
+        }
+
+        private float CalculateNewYPositionGold()
+        {
+            float totalHeight = (_banknoteSize.y + _banknoteSpacing) *
+                                BanknoteManager.Instance.silverBanknoteList.Count;
+            return totalHeight;
         }
 
         private void CalculateObjectSize(GameObject gameObject)

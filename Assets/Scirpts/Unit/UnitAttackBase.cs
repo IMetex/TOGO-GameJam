@@ -15,10 +15,12 @@ namespace Scirpts.Enemy
         protected Animator Animator;
         protected Stats Stats;
         protected bool IsChasing = false;
-        protected Vector3 OriginalPosition;
+        public Vector3 OriginalPosition;
         
         protected bool CanAttack = true;
         protected bool _isAttacking = false;
+        protected bool IsDead = false;
+
         
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
         private static readonly int IsAttack = Animator.StringToHash("IsAttack");
@@ -34,8 +36,19 @@ namespace Scirpts.Enemy
 
         protected virtual void Update()
         {
+            if (Stats.Health <= 0)
+            {
+                IsDead = true;
+                IsChasing = false;
+                _isAttacking = false;
+                Agent.isStopped = true;
+                Agent.velocity = Vector3.zero;
+                return;
+            }
+            
             CheckStatus();
             UpdateAnimatorVariables();
+            
             
             if (_isAttacking)
             {
@@ -47,7 +60,7 @@ namespace Scirpts.Enemy
                 Agent.isStopped = false;
             }
         }
-
+        
         protected abstract void CheckStatus();
 
         protected float ReturnDistance(Transform target)
@@ -74,7 +87,7 @@ namespace Scirpts.Enemy
 
             CanAttack = false;
             IsChasing = false;
-            Stats.TakeDamage(target, Stats.damage);
+            Stats.TakeDamage(target, Stats.Damage);
             Animator.SetTrigger(IsAttack);
             StartCoroutine(ResetAttackCooldown());
         }

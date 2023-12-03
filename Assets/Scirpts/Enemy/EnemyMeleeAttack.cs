@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Scirpts.Enemy
 {
@@ -28,6 +26,12 @@ namespace Scirpts.Enemy
                 if (distanceToFriendly < chaseDistance)
                 {
                     foundFriendlyInChaseRange = true;
+                    
+                    if (distanceToFriendly > chaseDistance)
+                    {
+                        Agent.SetDestination(OriginalPosition);
+                        IsChasing = false;
+                    }
 
                     if (distanceToFriendly > attackRange)
                     {

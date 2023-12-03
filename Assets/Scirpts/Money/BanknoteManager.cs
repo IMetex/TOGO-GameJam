@@ -2,43 +2,52 @@ using System.Collections.Generic;
 using Scirpts.Singleton;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scirpts.Money
 {
     public class BanknoteManager : Singleton<BanknoteManager>
     {
-        public List<GameObject> _playerBanknoteList = new List<GameObject>();
-        private int _banknoteCount = 0;
-        public TMP_Text _banknoteText;
+        public List<GameObject> silverBanknoteList = new List<GameObject>();
+        public List<GameObject> goldBanknoteList = new List<GameObject>();
+
+        private int _goldBanknoteCount = 0;
+        
+        [SerializeField] private TMP_Text _silverBanknoteText;
+        [SerializeField] private TMP_Text _goldBanknoteText;
         private readonly int _banknoteIncreaseValue = 1;
 
-        public int BanknoteCount
-        {
-            get => _banknoteCount;
-            set => _banknoteCount = value;
-        }
+        public int SilverBanknoteCount { get; set; } = 0;
 
-        public void BanknoteTextUpdate(int value)
+        public int GoldBanknoteCount { get; set; } = 0;
+    
+        
+        public void SilverBanknoteTextUpdate(int value)
         {
-            _banknoteCount += value;
-            _banknoteText.text = _banknoteCount.ToString();
+            SilverBanknoteCount += value;
+            _silverBanknoteText.text = SilverBanknoteCount.ToString();
+        }
+        public void GoldBanknoteTextUpdate(int value)
+        {
+            GoldBanknoteCount += value;
+            _goldBanknoteText.text = GoldBanknoteCount.ToString();
         }
 
         public int GetBanknoteCount()
         {
-            return _banknoteCount;
+            return SilverBanknoteCount;
         }
 
         public void SpendBanknoteCount(int price)
         {
-            _banknoteCount -= price;
+            SilverBanknoteCount -= price;
         }
 
         private bool TryBuyThisUnit(int price)
         {
-            if (BanknoteManager.Instance.GetBanknoteCount() >= price)
+            if (GetBanknoteCount() >= price)
             {
-                BanknoteManager.Instance.SpendBanknoteCount(price);
+                SpendBanknoteCount(price);
                 return true;
             }
 
@@ -47,13 +56,13 @@ namespace Scirpts.Money
 
         public void RemovePlayerBanknote()
         {
-            int lastIndex = _playerBanknoteList.Count - 1;
-            
+            int lastIndex = silverBanknoteList.Count - 1;
+
             if (lastIndex >= 0)
             {
-                GameObject banknoteToRemove = _playerBanknoteList[lastIndex];
-                _playerBanknoteList.RemoveAt(lastIndex);
-                BanknoteTextUpdate(-_banknoteIncreaseValue);
+                GameObject banknoteToRemove = silverBanknoteList[lastIndex];
+                silverBanknoteList.RemoveAt(lastIndex);
+                SilverBanknoteTextUpdate(-_banknoteIncreaseValue);
                 Destroy(banknoteToRemove);
             }
         }

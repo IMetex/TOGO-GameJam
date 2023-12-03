@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 4258337018243735952}
   - component: {fileID: 3288444288530828482}
   - component: {fileID: 8261043881695717309}
+  - component: {fileID: 3736830307191957930}
   m_Layer: 8
   m_Name: EnemyParent
   m_TagString: Enemy
@@ -550,6 +551,7 @@ MonoBehaviour:
   chaseDistance: 10
   attackCooldown: 1
   walkSpeed: 2
+  OriginalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &8261043881695717309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,8 +564,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f07113b610b0f479d32aa3c6ab0245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  health: 100
   damage: 20
+--- !u!114 &3736830307191957930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751793817609757742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1f041c40a24f878c2d9aa7988c69a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  banknoteSilver: {fileID: 0}
+  banknoteGold: {fileID: 0}
 --- !u!1 &2089718738994584902
 GameObject:
   m_ObjectHideFlags: 0

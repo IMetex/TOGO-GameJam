@@ -1,15 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Stats : MonoBehaviour
+namespace Scirpts
 {
-    public int _health;
-    public int damage;
-
-
-    public void TakeDamage(GameObject target, int damaged)
+    public class Stats : MonoBehaviour
     {
-        target.GetComponent<Stats>()._health -= damaged;
+        [SerializeField] private int health;
+        [SerializeField] private int damage;
+        public int Health
+        {
+            get => health;
+            set => health = value;
+        }
+
+        public int Damage
+        {
+            get => damage;
+            set => damage = value;
+        }
+
+
+        public void TakeDamage(GameObject target, int damaged)
+        {
+            target.GetComponent<Stats>().Health -= Damage;
+            
+            
+        }
     }
 }

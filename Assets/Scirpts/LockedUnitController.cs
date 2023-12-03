@@ -41,7 +41,7 @@ namespace Scirpts
 
         private void TryPurchase()
         {
-            if (!isPurchased && BanknoteManager.Instance._playerBanknoteList.Count > 0)
+            if (!isPurchased && BanknoteManager.Instance.silverBanknoteList.Count > 0)
             {
                 decrementTimer -= Time.deltaTime;
 

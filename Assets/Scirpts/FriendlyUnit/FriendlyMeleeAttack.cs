@@ -1,7 +1,6 @@
-using System.Collections;
 using Scirpts.Enemy;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Scirpts.Unit
 {
@@ -34,13 +33,13 @@ namespace Scirpts.Unit
         
         private void SetFormation()
         {
-            foreach (Vector3 point in FriendlyUnitManager.Instance._points)
+            foreach (Vector3 point in FriendlyUnitManager.Instance.points)
             {
                 Agent.SetDestination(_playerFollow.position + point);
                 FaceTarget(_playerRotation);
             }
 
-            IsChasing = !(Agent.remainingDistance < 0.1f);
+            IsChasing = !(Agent.remainingDistance > 0.1f);
         }
 
         protected override void CheckStatus()
