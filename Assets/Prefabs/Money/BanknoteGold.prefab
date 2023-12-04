@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7049590208274132745
+--- !u!1 &1693053305028437914
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4740202271248294670}
-  - component: {fileID: 1565896917293998954}
-  - component: {fileID: 2547653284203993887}
-  - component: {fileID: 4275745221890420947}
-  - component: {fileID: 2175448696751666177}
+  - component: {fileID: 3161783857841887875}
+  - component: {fileID: 6294965311419359583}
+  - component: {fileID: 1157340293419277469}
+  - component: {fileID: 5135968110943881767}
+  - component: {fileID: 7169599151086146807}
   m_Layer: 9
   m_Name: BanknoteGold
   m_TagString: Banknote
@@ -20,36 +20,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4740202271248294670
+--- !u!4 &3161783857841887875
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049590208274132745}
+  m_GameObject: {fileID: 1693053305028437914}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.77, y: 0.1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.206, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1565896917293998954
+--- !u!33 &6294965311419359583
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049590208274132745}
-  m_Mesh: {fileID: -5216581434543980006, guid: 84c1b2bdac06fb448b94862c04fd8cd4, type: 3}
---- !u!23 &2547653284203993887
+  m_GameObject: {fileID: 1693053305028437914}
+  m_Mesh: {fileID: 2159703810824169821, guid: c44814f3d74684144bce086c01173b90, type: 3}
+--- !u!23 &1157340293419277469
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049590208274132745}
+  m_GameObject: {fileID: 1693053305028437914}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,8 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb62b7fcfc0da9048a0c138370b15dd4, type: 2}
-  - {fileID: 2100000, guid: 21e321d46244a394b8e8600a40759557, type: 2}
+  - {fileID: 2100000, guid: 5900903700204404cb3a11d3432e6b18, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +85,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4275745221890420947
-SphereCollider:
+--- !u!114 &5135968110943881767
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049590208274132745}
+  m_GameObject: {fileID: 1693053305028437914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5977c5b2de041bba4a57540ae8c83f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &7169599151086146807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693053305028437914}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,17 +116,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2175448696751666177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049590208274132745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5977c5b2de041bba4a57540ae8c83f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Size: {x: 0.7880022, y: 0.19553101, z: 0.7907061}
+  m_Center: {x: 0, y: -0.000090327114, z: 0}

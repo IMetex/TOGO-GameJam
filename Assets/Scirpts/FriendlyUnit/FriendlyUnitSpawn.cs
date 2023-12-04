@@ -21,41 +21,50 @@ namespace Scirpts.Unit
             }
             set => _formation = value;
         }
-        
-        
+
         [SerializeField] private Image fillImage;
-
         [SerializeField] private float fillSpeed = 0.5f;
-
         [SerializeField] private BoxFormation boxFormation;
-
         [SerializeField] private GameObject _unitPrefab;
-
-        
 
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                FillProgressBar();
+                DecreaseProgressBar();
             }
         }
 
-        private void FillProgressBar()
+        private void OnTriggerEnter(Collider other)
         {
-            fillImage.fillAmount += fillSpeed * Time.deltaTime;
-
-            if (fillImage.fillAmount >= 1f && BanknoteManager.Instance.GetBanknoteCount() > 0 &&
-                FriendlyUnitManager.Instance.SpawnedUnitsCount < FriendlyUnitManager.Instance.MaxUnitCount)
+            if (other.CompareTag("Player"))
             {
-                FriendlyUnitManager.Instance.points = Formation.EvaluatePoints().ToList();
-                var remainingPoints =
-                    FriendlyUnitManager.Instance.points.Skip(FriendlyUnitManager.Instance.spawnedUnits.Count);
-                Spawn(remainingPoints);
-                boxFormation.UnitWith++;
-                FriendlyUnitManager.Instance.UnitCountDisplay(1);
-                BanknoteManager.Instance.RemovePlayerBanknote();
-                ResetFillBar();
+                boxFormation.UnitWith = FriendlyUnitManager.Instance.spawnedUnits.Count + 1;
+            }
+        }
+
+        private void DecreaseProgressBar()
+        {
+            fillImage.fillAmount -= fillSpeed * Time.deltaTime;
+
+            if (fillImage.fillAmount <= 0f)
+            {
+                if (BanknoteManager.Instance.GetBanknoteCount() > 0 &&
+                    FriendlyUnitManager.Instance.spawnedUnits.Count  < FriendlyUnitManager.Instance.MaxUnitCount)
+                {
+                    FriendlyUnitManager.Instance.points = Formation.EvaluatePoints().ToList();
+                    var remainingPoints =
+                        FriendlyUnitManager.Instance.points.Skip(FriendlyUnitManager.Instance.spawnedUnits.Count);
+
+                    if (remainingPoints.Any())
+                    {
+                        Spawn(remainingPoints);
+                        boxFormation.UnitWith++;
+                        FriendlyUnitManager.Instance.UnitCountDisplay(1);
+                        BanknoteManager.Instance.RemovePlayerBanknote();
+                        ResetFillBar();
+                    }
+                }
             }
         }
 
@@ -68,10 +77,15 @@ namespace Scirpts.Unit
                 UnitsManager.Instance.friendlyUnit.Add(unit.transform);
             }
         }
-        
+
         private void ResetFillBar()
         {
-            fillImage.fillAmount = 0f;
+            fillImage.fillAmount = 1f;
+        }
+        
+        public void SetAlternatePrefab(GameObject alternatePrefab)
+        {
+            _unitPrefab = alternatePrefab;
         }
     }
 }

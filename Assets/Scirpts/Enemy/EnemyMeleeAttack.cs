@@ -6,14 +6,15 @@ namespace Scirpts.Enemy
     {
         private const string PlayerTag = "Player";
         private Transform _playerReference;
+        private Stats _stats;
 
         protected override void Start()
         {
-                                     
             base.Start();
+            _stats = GetComponent<Stats>();
             _playerReference = GameObject.FindWithTag(PlayerTag)?.transform;
         }
-
+        
         protected override void CheckStatus()
         {
             bool foundFriendlyInChaseRange = false;
@@ -21,24 +22,20 @@ namespace Scirpts.Enemy
             for (int i = UnitsManager.Instance.friendlyUnit.Count - 1; i >= 0; i--)
             {
                 var friendly = UnitsManager.Instance.friendlyUnit[i];
+                if (friendly == null) return;
+                
                 float distanceToFriendly = ReturnDistance(friendly);
 
                 if (distanceToFriendly < chaseDistance)
                 {
                     foundFriendlyInChaseRange = true;
-                    
-                    if (distanceToFriendly > chaseDistance)
-                    {
-                        Agent.SetDestination(OriginalPosition);
-                        IsChasing = false;
-                    }
 
                     if (distanceToFriendly > attackRange)
                     {
                         IsChasing = true;
                         FaceTarget(friendly);
                         Agent.SetDestination(friendly.position);
-                        _isAttacking = false;
+                        Agent.isStopped = false;
                     }
                     else
                     {
@@ -46,40 +43,39 @@ namespace Scirpts.Enemy
                         FaceTarget(friendly);
                         PerformAttack(friendly.gameObject);
                         Agent.SetDestination(OriginalPosition);
-                        _isAttacking = true;
                     }
                 }
             }
-            
-            // Attack to player
+
             if (!foundFriendlyInChaseRange)
             {
                 float distanceToPlayer = ReturnDistance(_playerReference);
-
+                
                 if (distanceToPlayer > chaseDistance)
                 {
                     Agent.SetDestination(OriginalPosition);
                     IsChasing = false;
+                    chaseDistance = 10;
                 }
-
-                if (distanceToPlayer < chaseDistance && distanceToPlayer > attackRange)
+                else if (distanceToPlayer > attackRange)
                 {
                     IsChasing = true;
                     FaceTarget(_playerReference);
+                    Agent.isStopped = false;
                     Agent.SetDestination(_playerReference.position);
+                    chaseDistance = 4;
                 }
-
-                if (distanceToPlayer < chaseDistance && distanceToPlayer <= attackRange)
+                else
                 {
                     IsChasing = false;
                     FaceTarget(_playerReference);
                     PerformAttack(_playerReference.gameObject);
                     Agent.SetDestination(OriginalPosition);
+                    chaseDistance = 10;
                 }
-              
             }
         }
-        
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;

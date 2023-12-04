@@ -11,14 +11,14 @@ namespace Scirpts.Enemy
         [SerializeField] protected float attackCooldown = 0.5f;
         [SerializeField] protected float walkSpeed = 5f;
         
-        protected NavMeshAgent Agent;
+        public NavMeshAgent Agent;
         protected Animator Animator;
         protected Stats Stats;
-        protected bool IsChasing = false;
+        public bool IsChasing = false;
         public Vector3 OriginalPosition;
         
-        protected bool CanAttack = true;
-        protected bool _isAttacking = false;
+        public bool CanAttack = true;
+        public bool _isAttacking = false;
         protected bool IsDead = false;
 
         
@@ -36,14 +36,6 @@ namespace Scirpts.Enemy
 
         protected virtual void Update()
         {
-            if (Stats.Health <= 0)
-            {
-                IsDead = true;
-                IsChasing = false;
-                _isAttacking = false;
-                Agent.isStopped = true;
-                Agent.velocity = Vector3.zero;
-            }
             
             CheckStatus();
             UpdateAnimatorVariables();
@@ -64,8 +56,7 @@ namespace Scirpts.Enemy
 
         protected float ReturnDistance(Transform target)
         {
-            return Vector3.Distance(transform.position ,new Vector3
-                (target.position.x,transform.position.y,target.position.z));
+            return Vector3.Distance(transform.position ,target.position);
         }
 
         protected void FaceTarget(Transform target)
@@ -74,8 +65,8 @@ namespace Scirpts.Enemy
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
-        
-        void UpdateAnimatorVariables()
+
+        protected void UpdateAnimatorVariables()
         {
             bool isWalking = IsChasing || (Agent.remainingDistance > 0.1f && Agent.destination != OriginalPosition);
             Animator.SetBool(IsWalking, isWalking);
@@ -87,6 +78,7 @@ namespace Scirpts.Enemy
 
             CanAttack = false;
             IsChasing = false;
+            _isAttacking = true;
             Stats.TakeDamage(target, Stats.Damage);
             Animator.SetTrigger(IsAttack);
             StartCoroutine(ResetAttackCooldown());
@@ -96,6 +88,7 @@ namespace Scirpts.Enemy
         {
             yield return new WaitForSeconds(attackCooldown);
             CanAttack = true;
+            _isAttacking = false;
         }
     }
 }

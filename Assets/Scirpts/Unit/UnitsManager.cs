@@ -21,6 +21,7 @@ namespace Scirpts.Enemy
         [SerializeField] private GameObject banknoteGold;
 
         private static readonly int IsDead = Animator.StringToHash("IsDead");
+        private static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
 
         private void Update()
@@ -39,19 +40,30 @@ namespace Scirpts.Enemy
                 var unitHealth = unit.GetComponent<Stats>().Health;
                 var unitAnimator = unit.GetComponent<Animator>();
                 var unitBanknote = unit.GetComponent<CreateBanknote>();
+                var unitAttack = unit.GetComponent<UnitAttackBase>();
 
                 if (unitHealth <= 0)
                 {
                     unitAnimator.SetTrigger(IsDead);
+                    
                     units.RemoveAt(i);
-                    unitBanknote.BanknoteCreater(unit, banknote);
-                    Destroy(unit.gameObject, 2.2f);
-                    _progressBar.UpdateProgressBar();
-
+                    unitBanknote.BanknoteCreated(unit, banknote);
+                    unitAttack.CanAttack = false;
+                    unitAttack.Agent.isStopped = true;
+                    unitAttack.Agent.velocity = Vector3.zero;
+                    unitAttack._isAttacking = false;
+                    unitAttack.IsChasing = false;
+                    Destroy(unit.gameObject, 1f);
+                    
                     if (isFriendly)
                     {
                         unitManager.spawnedUnits.RemoveAt(i);
                         unitManager.points.RemoveAt(i);
+                        FriendlyUnitManager.Instance.UnitCountDisplay(-1);
+                    }
+                    else
+                    {
+                        _progressBar.UpdateProgressBar();
                     }
                 }
             }

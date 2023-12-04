@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1909330870105249570
+--- !u!1 &4368534518463564685
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4004110638653596410}
-  - component: {fileID: 2459618275358090283}
-  - component: {fileID: 991114380754079415}
-  - component: {fileID: 305230922076323640}
-  - component: {fileID: 3283045520893983812}
+  - component: {fileID: 6765438974738547749}
+  - component: {fileID: 3131567306086955231}
+  - component: {fileID: 5007455345571267709}
+  - component: {fileID: 3090733200754664507}
+  - component: {fileID: 5424360596741135808}
   m_Layer: 9
   m_Name: BanknoteSilver
   m_TagString: Banknote
@@ -20,36 +20,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4004110638653596410
+--- !u!4 &6765438974738547749
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909330870105249570}
+  m_GameObject: {fileID: 4368534518463564685}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0000000037252903, y: 0.525, z: -0.001586466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2459618275358090283
+--- !u!33 &3131567306086955231
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909330870105249570}
-  m_Mesh: {fileID: -5216581434543980006, guid: 84c1b2bdac06fb448b94862c04fd8cd4, type: 3}
---- !u!23 &991114380754079415
+  m_GameObject: {fileID: 4368534518463564685}
+  m_Mesh: {fileID: 2159703810824169821, guid: c44814f3d74684144bce086c01173b90, type: 3}
+--- !u!23 &5007455345571267709
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909330870105249570}
+  m_GameObject: {fileID: 4368534518463564685}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,8 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21b1e6923f1363041bcd5a08dcaad8e5, type: 2}
-  - {fileID: 2100000, guid: 852a17ae64b0b754cb4dcbeefae76858, type: 2}
+  - {fileID: 2100000, guid: a1d9a0761979ff5468925309089eede4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &305230922076323640
-SphereCollider:
+--- !u!65 &3090733200754664507
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909330870105249570}
+  m_GameObject: {fileID: 4368534518463564685}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,15 +104,15 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3283045520893983812
+  m_Size: {x: 0.7880022, y: 0.19553101, z: 0.7907061}
+  m_Center: {x: 0, y: -0.000090327114, z: 0}
+--- !u!114 &5424360596741135808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909330870105249570}
+  m_GameObject: {fileID: 4368534518463564685}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98d9f7595de54904b728dd460bace5a4, type: 3}

@@ -4,10 +4,10 @@ namespace Scirpts.Money
 {
     public class CreateBanknote : MonoBehaviour
     {
-        private Vector3 _spwanPos = new Vector3(0f, 0.15f, 0f); 
+        private Vector3 _spwanPos = new Vector3(0f, 0.2f, 0f); 
         private bool isInstantiate = true;
         
-        public void BanknoteCreater(Transform unit, GameObject banknote)
+        public void BanknoteCreated(Transform unit, GameObject banknote)
         {
             if (isInstantiate)
             {

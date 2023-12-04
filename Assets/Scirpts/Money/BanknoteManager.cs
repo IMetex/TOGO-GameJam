@@ -12,7 +12,7 @@ namespace Scirpts.Money
         public List<GameObject> goldBanknoteList = new List<GameObject>();
 
         private int _goldBanknoteCount = 0;
-        
+
         [SerializeField] private TMP_Text _silverBanknoteText;
         [SerializeField] private TMP_Text _goldBanknoteText;
         private readonly int _banknoteIncreaseValue = 1;
@@ -20,13 +20,14 @@ namespace Scirpts.Money
         public int SilverBanknoteCount { get; set; } = 0;
 
         public int GoldBanknoteCount { get; set; } = 0;
-    
-        
+
+
         public void SilverBanknoteTextUpdate(int value)
         {
             SilverBanknoteCount += value;
             _silverBanknoteText.text = SilverBanknoteCount.ToString();
         }
+
         public void GoldBanknoteTextUpdate(int value)
         {
             GoldBanknoteCount += value;
@@ -66,5 +67,19 @@ namespace Scirpts.Money
                 Destroy(banknoteToRemove);
             }
         }
+
+        public void RemovePlayerBanknoteGold()
+        {
+            int lastIndex = goldBanknoteList.Count - 1;
+
+            if (lastIndex >= 0)
+            {
+                GameObject banknoteToRemove = goldBanknoteList[lastIndex];
+                goldBanknoteList.RemoveAt(lastIndex);
+                GoldBanknoteTextUpdate(-_banknoteIncreaseValue);
+                Destroy(banknoteToRemove);
+            }
+        }
     }
 }
+

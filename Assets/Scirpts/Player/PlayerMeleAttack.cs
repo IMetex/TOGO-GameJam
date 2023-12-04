@@ -29,6 +29,11 @@ namespace Scirpts.Player
                     PerformAttack(enemy.gameObject);
                 }
             }
+
+            if (_stats.Health <= 0)
+            {
+                GameManager.Instance.YouLose();
+            }
         }
         
         protected override void PerformAttack(GameObject target)

@@ -38,10 +38,8 @@ namespace Scirpts.Unit
                 Agent.SetDestination(_playerFollow.position + point);
                 FaceTarget(_playerRotation);
             }
-
-            IsChasing = !(Agent.remainingDistance < 0.1f);
         }
-
+        
         protected override void CheckStatus()
         {
             bool foundEnemyInChaseRange = false;
@@ -60,14 +58,12 @@ namespace Scirpts.Unit
                         IsChasing = true;
                         FaceTarget(enemy);
                         Agent.SetDestination(enemy.position);
-                        _isAttacking = false;
                     }
                     else
                     {
                         IsChasing = false;
                         FaceTarget(enemy);
                         PerformAttack(enemy.gameObject);
-                        _isAttacking = true;
                     }
                 }
             }
@@ -75,6 +71,7 @@ namespace Scirpts.Unit
             if (!foundEnemyInChaseRange)
             {
                 SetFormation();
+                IsChasing = false;
             }
             
         }
