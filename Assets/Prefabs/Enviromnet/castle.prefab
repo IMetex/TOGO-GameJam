@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 2361325128381832519}
   - component: {fileID: 4668356725944493596}
   - component: {fileID: 5049269580789394254}
-  - component: {fileID: 6315923523956893363}
   m_Layer: 0
   m_Name: Castle.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2361325128381832519
 Transform:
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6315923523956893363
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502241846094247606}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 12.785833, y: 10.242157, z: 3.2}
-  m_Center: {x: 16.700245, y: 5.227994, z: 0.00009202957}
 --- !u!1 &897335639487864963
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,13 +95,12 @@ GameObject:
   - component: {fileID: 4304398127638001241}
   - component: {fileID: 722947066442054076}
   - component: {fileID: 1661719667730643837}
-  - component: {fileID: 3451811765603976965}
   m_Layer: 0
   m_Name: Castle.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4304398127638001241
 Transform:
@@ -134,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 897335639487864963}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.072052, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -190,27 +167,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3451811765603976965
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897335639487864963}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 20.551456, y: 2.7926655, z: 1.3254657}
-  m_Center: {x: 1.4997234, y: 19.927948, z: 0.51012075}
 --- !u!1 &2698336753410934130
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,13 +178,12 @@ GameObject:
   - component: {fileID: 1765700982337909761}
   - component: {fileID: 134164270992911341}
   - component: {fileID: 196120545314046450}
-  - component: {fileID: 3462753431247555882}
   m_Layer: 0
   m_Name: Castle.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1765700982337909761
 Transform:
@@ -296,27 +251,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3462753431247555882
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2698336753410934130}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 12.785835, y: 10.242157, z: 3.2}
-  m_Center: {x: 29.48608, y: 5.227994, z: 0.00009202957}
 --- !u!1 &2921786112176458114
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,13 +262,12 @@ GameObject:
   - component: {fileID: 6420484515655624806}
   - component: {fileID: 1399955407448473968}
   - component: {fileID: 1363950260998564906}
-  - component: {fileID: 1431113731184495310}
   m_Layer: 0
   m_Name: Castle.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6420484515655624806
 Transform:
@@ -402,27 +335,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1431113731184495310
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2921786112176458114}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.6697807, y: 16.434902, z: 5.6697807}
-  m_Center: {x: -38.618958, y: 8.318586, z: 0.9833656}
 --- !u!1 &5260988700139939206
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,13 +346,12 @@ GameObject:
   - component: {fileID: 1416797254739103702}
   - component: {fileID: 6984609550575405999}
   - component: {fileID: 893081712602674416}
-  - component: {fileID: 4914634720528970623}
   m_Layer: 0
   m_Name: Castle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1416797254739103702
 Transform:
@@ -508,27 +419,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4914634720528970623
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5260988700139939206}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 12.785832, y: 10.242157, z: 3.2}
-  m_Center: {x: -17.299755, y: 5.227994, z: 0.00009202957}
 --- !u!1 &5777327202331945487
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +430,6 @@ GameObject:
   - component: {fileID: 7020190092124386826}
   - component: {fileID: 98278197794326454}
   - component: {fileID: 583170663268125582}
-  - component: {fileID: 7926271293053348598}
   m_Layer: 0
   m_Name: Castle.013
   m_TagString: Untagged
@@ -614,27 +503,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7926271293053348598
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5777327202331945487}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.6697807, y: 16.434902, z: 5.6697807}
-  m_Center: {x: 38.381042, y: 8.318586, z: 0.9833656}
 --- !u!1 &7464650544098074363
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,14 +514,12 @@ GameObject:
   - component: {fileID: 9005271341648165573}
   - component: {fileID: 1810202896050628527}
   - component: {fileID: 6558174837404729203}
-  - component: {fileID: 5753049086355147177}
-  - component: {fileID: 6947999641669763830}
   m_Layer: 0
   m_Name: Castle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &9005271341648165573
 Transform:
@@ -721,48 +587,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5753049086355147177
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7464650544098074363}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.448573, y: 10.349123, z: 3.6960845}
-  m_Center: {x: -4.168628, y: 5.174511, z: 0}
---- !u!65 &6947999641669763830
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7464650544098074363}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.4648457, y: 10.349123, z: 3.6960845}
-  m_Center: {x: 4.160492, y: 5.174511, z: 0}
 --- !u!1 &7594009786303888730
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,13 +598,12 @@ GameObject:
   - component: {fileID: 6871730612524684922}
   - component: {fileID: 8402554866318323077}
   - component: {fileID: 7610763854194934761}
-  - component: {fileID: 2651191403932039378}
   m_Layer: 0
   m_Name: Castle.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6871730612524684922
 Transform:
@@ -849,27 +672,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2651191403932039378
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7594009786303888730}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.6697807, y: 16.434902, z: 5.6697807}
-  m_Center: {x: -8.618955, y: 8.318586, z: 0.9833656}
 --- !u!1 &8092332200635727761
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,13 +683,12 @@ GameObject:
   - component: {fileID: 4451742810158002642}
   - component: {fileID: 4857098005547527020}
   - component: {fileID: 7533658314147549680}
-  - component: {fileID: 5543150880257057324}
   m_Layer: 0
   m_Name: Castle.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4451742810158002642
 Transform:
@@ -955,27 +756,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5543150880257057324
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8092332200635727761}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 12.785833, y: 10.242157, z: 3.2}
-  m_Center: {x: -30.085587, y: 5.227994, z: 0.00009202957}
 --- !u!1 &8326674549797799760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +780,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8326674549797799760}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1016,7 +796,6 @@ Transform:
   - {fileID: 1765700982337909761}
   - {fileID: 6420484515655624806}
   - {fileID: 7020190092124386826}
-  - {fileID: 983440778697058704}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8387019492276267206
@@ -1030,13 +809,12 @@ GameObject:
   - component: {fileID: 2742102152339000066}
   - component: {fileID: 5286099194169823104}
   - component: {fileID: 146172860103593000}
-  - component: {fileID: 6986208455362759993}
   m_Layer: 0
   m_Name: Castle.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2742102152339000066
 Transform:
@@ -1103,27 +881,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6986208455362759993
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387019492276267206}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 17.415573, y: 6.8202744, z: 0.28248382}
-  m_Center: {x: -0.35569334, y: 18.13565, z: 0.6892848}
 --- !u!1 &8509926318818218965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,13 +892,12 @@ GameObject:
   - component: {fileID: 45216167365396189}
   - component: {fileID: 7307538319261046497}
   - component: {fileID: 7144942893994180771}
-  - component: {fileID: 6131540186776766618}
   m_Layer: 0
   m_Name: Castle.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &45216167365396189
 Transform:
@@ -1210,103 +966,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6131540186776766618
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8509926318818218965}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.6697807, y: 16.434902, z: 5.6697807}
-  m_Center: {x: 8.381045, y: 8.318586, z: 0.9833656}
---- !u!1001 &5287249767763932952
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3404948452911308783}
-    m_Modifications:
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 50.81896
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.685458
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 93.01663
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5644761208092014984, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_Name
-      value: Tree_Left
-      objectReference: {fileID: 0}
-    - target: {fileID: 5644761208092014984, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9873da3466876ff4fbb81dfcdc4258bf, type: 3}
---- !u!4 &983440778697058704 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4955639145281805960, guid: 9873da3466876ff4fbb81dfcdc4258bf,
-    type: 3}
-  m_PrefabInstance: {fileID: 5287249767763932952}
-  m_PrefabAsset: {fileID: 0}

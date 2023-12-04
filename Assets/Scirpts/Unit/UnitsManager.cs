@@ -40,16 +40,20 @@ namespace Scirpts.Enemy
                 var unitHealth = unit.GetComponent<Stats>().Health;
                 var unitAnimator = unit.GetComponent<Animator>();
                 var unitBanknote = unit.GetComponent<CreateBanknote>();
-                var unitNavmesh = unit.GetComponent<NavMeshAgent>();
+                var unitAttack = unit.GetComponent<UnitAttackBase>();
 
                 if (unitHealth <= 0)
                 {
                     unitAnimator.SetTrigger(IsDead);
+                    
                     units.RemoveAt(i);
                     unitBanknote.BanknoteCreated(unit, banknote);
-                    unitNavmesh.isStopped = true;
-                    unitNavmesh.velocity = Vector3.zero;
-                    Destroy(unit.gameObject,5f);
+                    unitAttack.CanAttack = false;
+                    unitAttack.Agent.isStopped = true;
+                    unitAttack.Agent.velocity = Vector3.zero;
+                    unitAttack._isAttacking = false;
+                    unitAttack.IsChasing = false;
+                    Destroy(unit.gameObject, 1f);
                     
                     if (isFriendly)
                     {

@@ -15,16 +15,15 @@ namespace Scirpts
         [SerializeField] private GameObject unlockedUnit;
         [SerializeField] private Vector3 _spawnPos;
         [SerializeField] private int _swpanUnitCount = 5;
-        [SerializeField] private GameObject _goldUPunclock;
 
         private const float DecrementTimerMax = 0.5f;
         private float decrementTimer = DecrementTimerMax;
+
         private bool isPurchased = false;
 
         private void Start()
         {
             Initialize();
-            _goldUPunclock.SetActive(false);
         }
 
         private void Initialize()
@@ -80,7 +79,6 @@ namespace Scirpts
                var unlockObject =  Instantiate(unlockedUnit, transform.position + _spawnPos, rotation);
                unlockObject.transform.DOLocalMoveY(0, 0.5f).SetEase(Ease.OutBack);
                FriendlyUnitManager.Instance.MaxUnitCount += _swpanUnitCount;
-               _goldUPunclock.SetActive(true);
             }
 
             isPurchased = true;

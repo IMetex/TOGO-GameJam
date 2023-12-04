@@ -13,11 +13,6 @@ namespace Scirpts.Movement
 
         [Header("Player Speed Value")] [SerializeField]
         private float _moveSpeed;
-        
-        [Header("Movement Boundaries")]
-        [SerializeField] private float clampX = 10f;
-        [SerializeField] private float maxZ = 10f;
-        [SerializeField] private float minZ = -10f;
 
 
         private AnimationController _animationController;
@@ -46,15 +41,6 @@ namespace Scirpts.Movement
             _characterController.SimpleMove(movementVector * _moveSpeed);
 
             _animationController.SetBoolean("IsWalking", movementVector != Vector3.zero);
-            
-            Vector3 clampedPosition = new Vector3(
-                Mathf.Clamp(transform.position.x, -clampX, clampX),
-                transform.position.y,
-                Mathf.Clamp(transform.position.z, minZ, maxZ)
-            );
-
-            transform.position = clampedPosition;
-
         }
 
         private void SetRotation()
@@ -66,12 +52,11 @@ namespace Scirpts.Movement
                 _playerChildTransform.rotation = Quaternion.LookRotation(movementVector);
             }
         }
-        
+
         private void GetMovementInput()
         {
-            _horizontal = Mathf.Clamp(_dynamicJoystick.Horizontal,-40f , 40f);
-            _vertical = Mathf.Clamp(_dynamicJoystick.Vertical, -30f, 80f);
-
+            _horizontal = _dynamicJoystick.Horizontal;
+            _vertical = _dynamicJoystick.Vertical;
         }
     }
 }
