@@ -550,7 +550,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1.5
+<<<<<<< Updated upstream
   chaseDistance: 7
+=======
+  chaseDistance: 200
+>>>>>>> Stashed changes
   attackCooldown: 1
   walkSpeed: 2
   Agent: {fileID: 0}

@@ -139,8 +139,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+<<<<<<< Updated upstream:Assets/Prefabs/Friendly/Sword/swordLvl3.prefab
   damage: 15
 --- !u!114 &1262247886322947538
+=======
+  damage: 5
+--- !u!114 &-2418273408719764100
+>>>>>>> Stashed changes:Assets/Prefabs/FriendlyUnit.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
