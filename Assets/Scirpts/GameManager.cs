@@ -12,6 +12,7 @@ namespace Scirpts
         public GameObject _mainMenu;
         public GameObject _loseScren;
         public GameObject _NEXTScreen;
+        public AudioSource  _MUCİS;
 
         private void Start()
         {
@@ -24,6 +25,7 @@ namespace Scirpts
         {
             _playScreen.SetActive(false);
             _mainMenu.SetActive(true);
+            _MUCİS.Play();
         }
         
         public void RestarBtn()

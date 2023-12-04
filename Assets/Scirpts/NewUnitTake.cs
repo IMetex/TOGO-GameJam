@@ -15,7 +15,7 @@ namespace Scirpts
         [SerializeField] private Vector3 _spawnPos;
         [SerializeField] private int _swpanUnitCount = 3;
         [SerializeField] private GameObject newPrefab;
-        //[SerializeField] private GameObject newPrefab2;
+        [SerializeField] private ParticleSystem _particle;
 
         private const float DecrementTimerMax = 0.5f;
         private float decrementTimer = DecrementTimerMax;
@@ -80,6 +80,7 @@ namespace Scirpts
                 var friendlyUnitSpawn =GameObject.FindWithTag("UnitSpawn").GetComponent<FriendlyUnitSpawn>();
                 friendlyUnitSpawn.SetAlternatePrefab(newPrefab);
                 FriendlyUnitManager.Instance.MaxUnitCount += _swpanUnitCount;
+                _particle.Play();
             }
             
             isPurchased = true;
