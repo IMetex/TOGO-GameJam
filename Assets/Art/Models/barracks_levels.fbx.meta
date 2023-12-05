@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: 1e047a98657a6e641acd7e79f575d9c3
+guid: 777919a356427854f80d739c5ff74ca5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Barracks1
-    second: {fileID: 2100000, guid: 03b1c6c714d0b78429a99641c2402dcf, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Barracks3
-    second: {fileID: 2100000, guid: 03760e642704249488711a82672d0912, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Barracks4
-    second: {fileID: 2100000, guid: bd3043f9aad22d6469cc07f50b2ccf5e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Barracks5
-    second: {fileID: 2100000, guid: 9843fbfe1d8b5534c84a61b37771ffbe, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mat_Player_Red
-    second: {fileID: 2100000, guid: a0bbc76eea66a0a428243db4e59e1892, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -60,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.7
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -115,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.7
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

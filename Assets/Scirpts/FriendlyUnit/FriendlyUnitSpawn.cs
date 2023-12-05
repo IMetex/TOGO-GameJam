@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Scirpts.Enemy;
@@ -5,27 +6,25 @@ using Scirpts.Money;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Scirpts.Formations.Scripts;
 
 namespace Scirpts.Unit
 {
     public class FriendlyUnitSpawn : MonoBehaviour
     {
-        private FormationBase _formation;
-
-        public FormationBase Formation
-        {
-            get
-            {
-                if (_formation == null) _formation = GetComponent<FormationBase>();
-                return _formation;
-            }
-            set => _formation = value;
-        }
-
         [SerializeField] private Image fillImage;
         [SerializeField] private float fillSpeed = 0.5f;
-        [SerializeField] private BoxFormation boxFormation;
         [SerializeField] private GameObject _unitPrefab;
+        [SerializeField] private GameObject _barakaPrefab;
+       
+        private const string PlayerFollowTag = "PlayerFollow";
+        
+        private Transform _playerFollow;
+
+        private void Start()
+        {
+            _playerFollow = GameObject.FindWithTag(PlayerFollowTag)?.transform;
+        }
 
         private void OnTriggerStay(Collider other)
         {
@@ -39,7 +38,18 @@ namespace Scirpts.Unit
         {
             if (other.CompareTag("Player"))
             {
-                boxFormation.UnitWith = FriendlyUnitManager.Instance.spawnedUnits.Count + 1;
+                BoxFormation.Instance.UnitWith = FriendlyUnitManager.Instance.spawnedUnits.Count + 1;
+                BoxFormation.Instance.UnitDepth = 1;
+                BoxFormation.Instance._nthOffset = 0f;
+                BoxFormation.Instance.Spread = 1.5f;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                BoxFormation.Instance.UnitDepth = 2;
             }
         }
 
@@ -50,29 +60,28 @@ namespace Scirpts.Unit
             if (fillImage.fillAmount <= 0f)
             {
                 if (BanknoteManager.Instance.GetBanknoteCount() > 0 &&
-                    FriendlyUnitManager.Instance.spawnedUnits.Count  < FriendlyUnitManager.Instance.MaxUnitCount)
+                    FriendlyUnitManager.Instance.spawnedUnits.Count < FriendlyUnitManager.Instance.MaxUnitCount)
                 {
-                    FriendlyUnitManager.Instance.points = Formation.EvaluatePoints().ToList();
+                    FriendlyUnitManager.Instance.points = BoxFormation.Instance.EvaluatePoints().ToList();
                     var remainingPoints =
                         FriendlyUnitManager.Instance.points.Skip(FriendlyUnitManager.Instance.spawnedUnits.Count);
 
-                    if (remainingPoints.Any())
-                    {
-                        Spawn(remainingPoints);
-                        boxFormation.UnitWith++;
-                        FriendlyUnitManager.Instance.UnitCountDisplay(1);
-                        BanknoteManager.Instance.RemovePlayerBanknote();
-                        ResetFillBar();
-                    }
+                    Spawn(remainingPoints);
+                    BoxFormation.Instance.UnitWith++;
+                    FriendlyUnitManager.Instance.UnitCountDisplay(1);
+                    BanknoteManager.Instance.RemovePlayerBanknote();
+                    TakeTweenAnimaton(_barakaPrefab);
+                    ResetFillBar();
                 }
             }
         }
-
+        
         private void Spawn(IEnumerable<Vector3> points)
         {
             foreach (var pos in points)
             {
-                var unit = Instantiate(_unitPrefab, transform.position + pos, Quaternion.identity);
+                var spawnPosition = transform.position + pos;
+                var unit = Instantiate(_unitPrefab, spawnPosition, Quaternion.identity);
                 FriendlyUnitManager.Instance.spawnedUnits.Add(unit);
                 UnitsManager.Instance.friendlyUnit.Add(unit.transform);
             }
@@ -82,10 +91,19 @@ namespace Scirpts.Unit
         {
             fillImage.fillAmount = 1f;
         }
-        
+
         public void SetAlternatePrefab(GameObject alternatePrefab)
         {
             _unitPrefab = alternatePrefab;
+        }
+
+        public void TakeTweenAnimaton(GameObject obj)
+        {
+            var scale = new Vector3(1f,1f,1f);
+            Vector3 doScale = scale * 1.2f;
+
+            obj.transform.DOScale(doScale, 0.06f).OnComplete(() =>
+                obj.transform.DOScale(scale, 0.06f));
         }
     }
 }

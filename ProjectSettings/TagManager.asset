@@ -11,6 +11,9 @@ TagManager:
   - FriendlyUnitSpawn
   - PlayerRotationTag
   - UnitSpawn
+  - Heal
+  - Baraka
+  - Barakaa
   layers:
   - Default
   - TransparentFX
@@ -22,7 +25,7 @@ TagManager:
   - Unite
   - EnemyLayer
   - Banknote
-  - 
+  - Camera
   - 
   - 
   - 

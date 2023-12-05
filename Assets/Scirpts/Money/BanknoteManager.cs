@@ -10,9 +10,6 @@ namespace Scirpts.Money
     {
         public List<GameObject> silverBanknoteList = new List<GameObject>();
         public List<GameObject> goldBanknoteList = new List<GameObject>();
-
-        private int _goldBanknoteCount = 0;
-
         [SerializeField] private TMP_Text _silverBanknoteText;
         [SerializeField] private TMP_Text _goldBanknoteText;
         private readonly int _banknoteIncreaseValue = 1;
@@ -20,8 +17,7 @@ namespace Scirpts.Money
         public int SilverBanknoteCount { get; set; } = 0;
 
         public int GoldBanknoteCount { get; set; } = 0;
-
-
+        
         public void SilverBanknoteTextUpdate(int value)
         {
             SilverBanknoteCount += value;

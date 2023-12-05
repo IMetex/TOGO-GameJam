@@ -1,4 +1,5 @@
 using System;
+using Scirpts.Movement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ namespace Scirpts.Player
         private Stats _stats;
         private int healtAmount;
         [SerializeField] private Image _healtImg;
-        
+
 
         private void Awake()
         {
@@ -25,6 +26,11 @@ namespace Scirpts.Player
         private void Update()
         {
             HealthBarProgress();
+
+            if (_stats.Health < 0)
+            {
+                GameManager.Instance.YouLose();
+            }
         }
 
 
@@ -32,7 +38,5 @@ namespace Scirpts.Player
         {
             _healtImg.fillAmount = (float)_stats.Health / healtAmount;
         }
-        
-        
     }
 }
