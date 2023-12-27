@@ -5,6 +5,8 @@ namespace Scirpts.Enemy
 {
     public class EnemyTrigger : MonoBehaviour
     {
+        public int _newchaseDistance = 8;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Enemy"))
@@ -16,11 +18,7 @@ namespace Scirpts.Enemy
 
                     if (enemyNavmesh != null)
                     {
-                        enemyNavmesh.chaseDistance = 2;
-                    }
-                    else
-                    {
-                        Debug.LogError("UnitControllers component not found on enemy object.");
+                        enemyNavmesh.chaseDistance -= enemyNavmesh.chaseDistance - 1;
                     }
                 }
             }
@@ -37,11 +35,7 @@ namespace Scirpts.Enemy
 
                     if (enemyNavmesh != null)
                     {
-                        enemyNavmesh.chaseDistance = 15;
-                    }
-                    else
-                    {
-                        Debug.LogError("UnitControllers component not found on enemy object.");
+                        enemyNavmesh.chaseDistance = _newchaseDistance;
                     }
                 }
             }

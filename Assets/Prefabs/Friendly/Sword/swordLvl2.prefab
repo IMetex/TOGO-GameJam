@@ -709,7 +709,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -737,11 +737,8 @@ MonoBehaviour:
   chaseDistance: 15
   attackCooldown: 1
   walkSpeed: 8
-  Agent: {fileID: 0}
-  IsChasing: 0
-  OriginalPosition: {x: 0, y: 0, z: 0}
-  CanAttack: 1
-  _isAttacking: 0
+  agent: {fileID: 1670875534271330215}
+  isChasing: 0
   _deadPartical: {fileID: 1826063100952935286}
 --- !u!114 &5774800688885705741
 MonoBehaviour:
@@ -769,6 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1f041c40a24f878c2d9aa7988c69a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxBanknotes: 2
 --- !u!1 &2801585307016444613
 GameObject:
   m_ObjectHideFlags: 0

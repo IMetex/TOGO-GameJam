@@ -1,22 +1,27 @@
+using Scirpts.Money;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scirpts.Enemy
 {
     public class EnemyController : UnitControllers
     {
-        private const string PlayerTag = "Player";
         private Transform _playerReference;
-        public ParticleSystem _deadPartical;
-        private Stats _stats;
-        private Collider _collider;
-        private bool hasDied = false;
+        private const string PlayerTag = "Player";
+
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+
+        private bool _foundFriendlyInChaseRange = false;
+        public ParticleSystem _deadPartical;
+        private StatsManager _stats;
+        private Collider _collider;
+        private bool _hasDied = false;
 
         protected override void Start()
         {
             base.Start();
             _playerReference = GameObject.FindWithTag(PlayerTag)?.transform;
-            _stats = GetComponent<Stats>();
+            _stats = GetComponent<StatsManager>();
             _collider = GetComponent<Collider>();
         }
 
@@ -25,11 +30,9 @@ namespace Scirpts.Enemy
             Died();
             DiedPartical();
 
-            bool isWalking = IsChasing || (Agent.remainingDistance > 0.1f && Agent.destination != OriginalPosition);
-
-            Animator.SetBool(IsWalking, isWalking);
-
-            bool foundFriendlyInChaseRange = false;
+            bool isWalking = isChasing || (agent.remainingDistance > 0.1f && agent.destination != OriginalPosition);
+            _animation.SetBool(IsWalking, isWalking);
+            _foundFriendlyInChaseRange = false;
 
             for (int i = UnitsManager.Instance.friendlyUnit.Count - 1; i >= 0; i--)
             {
@@ -40,47 +43,47 @@ namespace Scirpts.Enemy
 
                 if (distanceToFriendly < chaseDistance)
                 {
-                    foundFriendlyInChaseRange = true;
+                    _foundFriendlyInChaseRange = true;
 
                     if (distanceToFriendly > attackRange)
                     {
-                        IsChasing = true;
+                        isChasing = true;
                         FaceTarget(friendly);
-                        Agent.SetDestination(friendly.position);
-                        Agent.isStopped = false;
+                        agent.SetDestination(friendly.position);
+                        agent.isStopped = false;
                     }
                     else
                     {
-                        IsChasing = false;
+                        isChasing = false;
                         FaceTarget(friendly);
                         PerformAttack(friendly.gameObject);
-                        Agent.SetDestination(OriginalPosition);
+                        agent.SetDestination(OriginalPosition);
                     }
                 }
             }
 
-            if (!foundFriendlyInChaseRange)
+            if (!_foundFriendlyInChaseRange)
             {
                 float distanceToPlayer = ReturnDistance(_playerReference);
 
                 if (distanceToPlayer > chaseDistance)
                 {
-                    Agent.SetDestination(OriginalPosition);
-                    IsChasing = false;
+                    agent.SetDestination(OriginalPosition);
+                    isChasing = false;
                 }
                 else if (distanceToPlayer > attackRange)
                 {
-                    IsChasing = true;
+                    isChasing = true;
                     FaceTarget(_playerReference);
-                    Agent.isStopped = false;
-                    Agent.SetDestination(_playerReference.position);
+                    agent.isStopped = false;
+                    agent.SetDestination(_playerReference.position);
                 }
                 else
                 {
-                    IsChasing = false;
+                    isChasing = false;
                     FaceTarget(_playerReference);
                     PerformAttack(_playerReference.gameObject);
-                    Agent.SetDestination(OriginalPosition);
+                    agent.SetDestination(OriginalPosition);
                 }
             }
         }
@@ -89,9 +92,9 @@ namespace Scirpts.Enemy
         {
             if (_stats.Health <= 0)
             {
-                Agent.isStopped = false;
-                Agent.velocity = Vector3.zero;
-                IsChasing = false;
+                agent.isStopped = false;
+                agent.velocity = Vector3.zero;
+                isChasing = false;
                 attackRange = 0;
                 chaseDistance = 0;
                 _collider.isTrigger = true;
@@ -101,13 +104,12 @@ namespace Scirpts.Enemy
 
         private void DiedPartical()
         {
-            if (_stats.Health <= 0 && !hasDied)
+            if (_stats.Health <= 0 && !_hasDied)
             {
                 _deadPartical.Play();
-                hasDied = true;
+                _hasDied = true;
             }
         }
-
 
         private void OnDrawGizmos()
         {

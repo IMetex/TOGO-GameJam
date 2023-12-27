@@ -10,7 +10,7 @@ namespace Scirpts
     {
         private Slider _slider;
         private int progress = 0;
-        
+
         private void Start()
         {
             _slider = GetComponent<Slider>();
@@ -21,6 +21,12 @@ namespace Scirpts
         {
             progress++;
             _slider.value = progress;
+        }
+
+
+        public void ResetProgressBar()
+        {
+            _slider.value = 0;
         }
     }
 }

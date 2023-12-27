@@ -5,12 +5,15 @@ namespace Scirpts.Player
 {
     public class PlayerAddHeal : MonoBehaviour
     {
-        private Stats _stats;
+        private StatsManager _statsManager;
         public int plusHealth;
+        private int currentHealth;
+        public ParticleSystem _healParticle;
 
         private void Start()
         {
-            _stats = GetComponent<Stats>();
+            _statsManager = GetComponent<StatsManager>();
+            currentHealth = _statsManager.Health;
         }
 
 
@@ -18,14 +21,9 @@ namespace Scirpts.Player
         {
             if (other.CompareTag("Heal"))
             {
-                int currentHealth = _stats.Health;
-
-                if (currentHealth < _stats.Health)
-                {
-                    int newHealth = Mathf.Min(currentHealth + plusHealth, _stats.Health);
-                    _stats.Health = newHealth;
-                    Destroy(other.gameObject);
-                }
+                _statsManager.Health += plusHealth;
+                _healParticle.Play();
+                Destroy(other.gameObject);
             }
         }
     }

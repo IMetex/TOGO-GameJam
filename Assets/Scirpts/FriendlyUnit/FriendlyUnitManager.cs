@@ -17,12 +17,12 @@ namespace Scirpts.Unit
         public void UnitCountDisplay(int value)
         {
             SpawnedUnitsCount += value;
-            spawnedUnitText.text = SpawnedUnitsCount.ToString() + "/ " + MaxUnitCount.ToString();
+            spawnedUnitText.text = SpawnedUnitsCount.ToString() + "/" + MaxUnitCount.ToString();
         }
 
         private void Update()
         {
-            spawnedUnitText.text = SpawnedUnitsCount.ToString() + "/ " + MaxUnitCount.ToString();
+            spawnedUnitText.text = SpawnedUnitsCount.ToString() + "/" + MaxUnitCount.ToString();
         }
     }
 }

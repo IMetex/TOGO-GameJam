@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Scirpts.Money;
 using Scirpts.Singleton;
@@ -9,9 +10,10 @@ namespace Scirpts.Enemy
 {
     public class UnitsManager : Singleton<UnitsManager>
     {
-        [Header("Unit List")] public List<Transform> enemies = new List<Transform>();
+        [Header("Unit List")]
+        public List<Transform> enemies = new List<Transform>();
         public List<Transform> friendlyUnit = new List<Transform>();
-
+       
         [Header("Progress Bar Enemy")] [SerializeField]
         private ProgressBar _progressBar;
 
@@ -22,8 +24,10 @@ namespace Scirpts.Enemy
 
         private static readonly int IsDead = Animator.StringToHash("IsDead");
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
-
-
+        private void Start()
+        {
+            FindAndAddEnemies();
+        }
         private void Update()
         {
             HandleUnitDeaths(enemies, banknoteGold, false);
@@ -37,7 +41,7 @@ namespace Scirpts.Enemy
             for (int i = units.Count - 1; i >= 0; i--)
             {
                 var unit = units[i];
-                var unitHealth = unit.GetComponent<Stats>().Health;
+                var unitHealth = unit.GetComponent<StatsManager>().Health;
                 var unitAnimator = unit.GetComponent<Animator>();
                 var unitBanknote = unit.GetComponent<CreateBanknote>();
                 var unitNavmesh = unit.GetComponent<NavMeshAgent>();
@@ -62,6 +66,18 @@ namespace Scirpts.Enemy
                         _progressBar.UpdateProgressBar();
                     }
                 }
+            }
+        }
+
+        public void FindAndAddEnemies()
+        {
+            GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+            enemies.Clear();
+
+            foreach (GameObject enemy in enemyObjects)
+            {
+                enemies.Add(enemy.transform);
             }
         }
     }

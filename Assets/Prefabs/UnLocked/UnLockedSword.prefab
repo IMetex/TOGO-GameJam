@@ -46,14 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b4eba7a2c17594a827794763d800ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 3
+  price: 5
   priceText: {fileID: 1697115903039618422}
-  lockedUnit: {fileID: 3387806660443604295}
-  unlockedUnit: {fileID: 133825078443811744, guid: fa49c9c801565c54c9070f7f47b10025,
+  destroyObject: {fileID: 3387806660443604295}
+  instantiateObject: {fileID: 133825078443811744, guid: fa49c9c801565c54c9070f7f47b10025,
     type: 3}
-  _spawnPos: {x: 8, y: 0, z: 0}
-  _swpanUnitCount: 3
-  _goldUPunclock: {fileID: 0}
+  _swpanUnitCount: 5
+  _spawnPos: {x: 8, y: -25, z: 0}
 --- !u!65 &7262473135606639477
 BoxCollider:
   m_ObjectHideFlags: 0

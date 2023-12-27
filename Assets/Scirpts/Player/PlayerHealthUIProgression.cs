@@ -7,36 +7,33 @@ namespace Scirpts.Player
 {
     public class PlayerHealthUIProgression : MonoBehaviour
     {
-        private Stats _stats;
+        private StatsManager _statsManager;
         private int healtAmount;
         [SerializeField] private Image _healtImg;
-
+        private Vector3 initialPosition;
 
         private void Awake()
         {
-            _stats = GetComponent<Stats>();
+            _statsManager = GetComponent<StatsManager>();
+            initialPosition = transform.position;
+            
         }
 
         private void Start()
         {
-            healtAmount = _stats.Health;
+            healtAmount = _statsManager.Health;
             HealthBarProgress();
         }
 
         private void Update()
         {
             HealthBarProgress();
-
-            if (_stats.Health < 0)
-            {
-                GameManager.Instance.YouLose();
-            }
         }
 
 
         private void HealthBarProgress()
         {
-            _healtImg.fillAmount = (float)_stats.Health / healtAmount;
+            _healtImg.fillAmount = (float)_statsManager.Health / healtAmount;
         }
     }
 }

@@ -15,7 +15,6 @@ namespace Scirpts.Camera
 
         public CinemachineVirtualCamera mainCam;
         public CinemachineVirtualCamera warCam;
-        public CinemachineVirtualCamera finishCam;
 
         private void Start()
         {
@@ -26,7 +25,6 @@ namespace Scirpts.Camera
         private void Update()
         {
            PlayerCameraChange();
-           //FinishCam();
         }
 
         private void PlayerCameraChange()
@@ -55,15 +53,6 @@ namespace Scirpts.Camera
                 animator.Play("MainCamera");
                 warCam.Priority = 0;
                 mainCam.Priority = 1;
-            }
-        }
-
-        private void FinishCam()
-        {
-            if (UnitsManager.Instance.enemies.Count == 0)
-            {
-                animator.Play("FinishCam");
-                finishCam.Priority = 2;
             }
         }
     }

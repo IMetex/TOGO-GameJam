@@ -16,6 +16,7 @@ namespace Scirpts.Unit
         [SerializeField] private float fillSpeed = 0.5f;
         [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private GameObject _barakaPrefab;
+        [SerializeField] private Transform _spawnPosition;
        
         private const string PlayerFollowTag = "PlayerFollow";
         
@@ -80,8 +81,7 @@ namespace Scirpts.Unit
         {
             foreach (var pos in points)
             {
-                var spawnPosition = transform.position + pos;
-                var unit = Instantiate(_unitPrefab, spawnPosition, Quaternion.identity);
+                var unit = Instantiate(_unitPrefab, _spawnPosition.position, Quaternion.identity);
                 FriendlyUnitManager.Instance.spawnedUnits.Add(unit);
                 UnitsManager.Instance.friendlyUnit.Add(unit.transform);
             }
